@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-navbar>
+        <ion-grid>
+          <ion-row>
+            <ion-col col-2>
+                <ion-buttons>
+                    <button ion-button icon-only menuToggle>
+                        <ion-icon name="menu"></ion-icon>
+                    </button>
+                </ion-buttons>
+            </ion-col>
+            <ion-col> 
+              <ion-title>Tabs</ion-title>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-navbar>
+  </ion-header>
+  <ion-content>
+      <ion-tabs tabsPlacement = "top" color="primary" tabsHighlight="true">
+          <ion-tab [root]="dashboardPage" tabTitle="dashboard" tabIcon="star"></ion-tab>
+          <ion-tab [root]="tab1Page" tabTitle="tab1" tabIcon="star"></ion-tab>
+          <ion-tab [root]="tab2Page" tabTitle="tab2" tabIcon="book"></ion-tab>
+          <ion-tab [root]="tab3Page" tabTitle="tab3" tabIcon="add"></ion-tab>
+      </ion-tabs>
+  </ion-content>

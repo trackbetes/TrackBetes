@@ -1,6 +1,9 @@
 {
   "name": "TrackBetes",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular",
-  "id": "cbd82f8c"
+  "id": "cbd82f8c",
+  "app_id": ""
 }
