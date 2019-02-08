@@ -3,4 +3,12 @@ page-dashboard {
         text-align: center;
     }
 
+    .dashboardGraph{
+        height:50%;
+        width:100%;
+        background-image: url("../../../assets/imgs/graph.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100% ;
+    }
+
 }

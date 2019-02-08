@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
+//import { HomePage } from '../pages/home/home';
 import { SignUpPage } from '../pages/sign-up/sign-up';
 import { SignInPage } from '../pages/sign-in/sign-in';
 import { DashboardPage } from '../pages/patientPages/dashboard/dashboard';
@@ -17,6 +17,12 @@ import { TabsPage } from '../pages/patientPages/tabs/tabs';
 import { Tab1Page } from '../pages/patientPages/tab1/tab1';
 import { Tab2Page } from '../pages/patientPages/tab2/tab2';
 import { Tab3Page } from '../pages/patientPages/tab3/tab3';
+import { BloodPressurePage } from '../pages/patientPages/medicalRecordsPages/blood-pressure/blood-pressure';
+import { BloodSugarLevelPage } from '../pages/patientPages/medicalRecordsPages/blood-sugar-level/blood-sugar-level';
+import { CholesterolPage } from '../pages/patientPages/medicalRecordsPages/cholesterol/cholesterol';
+import { InsulinPage } from '../pages/patientPages/medicalRecordsPages/insulin/insulin';
+import { KetonesPage } from '../pages/patientPages/medicalRecordsPages/ketones/ketones';
+import { WeightPage } from '../pages/patientPages/medicalRecordsPages/weight/weight';
 
 const firebaseAuth  = {
     apiKey: "AIzaSyByq1Xdud3O8O9tn29bPNi5S_SkN31kI0g",
@@ -34,6 +40,14 @@ const firebaseAuth  = {
     SignInPage,
     DashboardPage,
     MedicalRecordsModalPage,
+    //Medical Records Pages
+    BloodPressurePage,
+    BloodSugarLevelPage,
+    CholesterolPage,
+    InsulinPage,
+    KetonesPage,
+    WeightPage,
+    
     TabsPage,
     Tab1Page,
     Tab2Page,
@@ -53,6 +67,14 @@ const firebaseAuth  = {
     SignInPage,
     DashboardPage,
     MedicalRecordsModalPage,
+    //Medical Records Pages
+    BloodPressurePage,
+    BloodSugarLevelPage,
+    CholesterolPage,
+    InsulinPage,
+    KetonesPage,
+    WeightPage,
+
     TabsPage,
     Tab1Page,
     Tab2Page,

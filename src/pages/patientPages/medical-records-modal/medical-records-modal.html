@@ -10,8 +10,64 @@
 </ion-header>
 
 
-<ion-content padding>
-  
+<ion-content>
+  <div class="card">
+    <div class="card-header bg-white">
+      <h5 text-center>Add new record</h5>
+    </div>
+    <div class="card-body bg-light">
+      <ion-grid>
+        <ion-row text-center>
+          <ion-col col-sm-4>
+            <button ion-button icon-only clear color="danger" large (click)="addBloodSugarLevel()">
+              <ion-icon name="water"></ion-icon>
+            </button>
+            <p>Blood Sugar Level</p>
+          </ion-col>
+          <ion-col col-sm-4>
+            <button ion-button icon-only clear large (click)="addInsulin()">
+                <ion-icon name="custom-insulin"></ion-icon>
+            </button>
+            <p>Insulin Dosage</p>
+          </ion-col>
+          <ion-col col-sm-4>
+            <button ion-button icon-only clear color="dark" large (click)="addWeight()">
+                <ion-icon name="custom-weight"></ion-icon>
+            </button>
+            <p>Body Weight</p>
+          </ion-col>
+        </ion-row>
+        <ion-row text-center>
+            <ion-col col-sm-4>
+              <button ion-button icon-only clear color="danger" large (click)="addBloodPressure()">
+                <ion-icon name="custom-blood-pressure"></ion-icon>
+              </button>
+              <p>Blood Pressure</p>
+            </ion-col>
+            <ion-col col-sm-4>
+              <button ion-button icon-only clear large (click)="addCholesterol()">
+                  <ion-icon name="custom-cholesterol"></ion-icon>
+              </button>
+              <p>Cholesterol</p>
+            </ion-col>
+            <ion-col col-sm-4>
+              <button ion-button icon-only clear color="dark" large (click)="addKetones()">
+                  <ion-icon name="custom-weight"></ion-icon>
+              </button>
+              <p>Ketones</p>
+            </ion-col>
+          </ion-row>
+          <!--<ion-row text-center>
+              <ion-col col-sm-4>
+                <button ion-button icon-only clear color="dark" large (click)="addHA1C()">
+                    <ion-icon name="custom-weight"></ion-icon>
+                </button>
+                <p>HA1C</p>
+              </ion-col>
+          </ion-row>-->
+      </ion-grid>
+    </div>
+  </div>
   <ion-fab mini bottom center>
     <button ion-fab (click)="closeModal()">
       <ion-icon name="close"></ion-icon>
