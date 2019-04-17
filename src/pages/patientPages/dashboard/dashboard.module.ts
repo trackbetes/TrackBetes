@@ -8,6 +8,7 @@ import { DashboardPage } from './dashboard';
   ],
   imports: [
     IonicPageModule.forChild(DashboardPage),
+      
   ],
 })
 export class DashboardPageModule {

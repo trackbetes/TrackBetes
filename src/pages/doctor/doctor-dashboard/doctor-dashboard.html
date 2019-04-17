@@ -1,0 +1,28 @@
+
+<ion-content padding>
+    <ion-card>
+      <ion-card-header>Patients</ion-card-header>
+      <ion-card-content *ngIf="userHasPatients" no-padding>
+            <ion-item *ngFor="let patient of patientsList" (click)="openPatientModal()" lines>
+                <ion-avatar item-start>
+                    <img src="../../../assets//imgs//profil-pic_dummy.png">
+                </ion-avatar>
+                {{patient.username}}
+                <ion-icon name="arrow-dropright" item-end></ion-icon>
+            </ion-item>
+      </ion-card-content>
+      <ion-card-content *ngIf="!userHasPatients">
+        <p>You do not have any patient</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>Prescriptions</ion-card-header>
+    <ion-card-content></ion-card-content>
+
+    </ion-card>
+    <ion-card>
+        <ion-card-header>Appointments</ion-card-header>
+        <ion-card-content></ion-card-content>
+            
+    </ion-card>
+</ion-content>

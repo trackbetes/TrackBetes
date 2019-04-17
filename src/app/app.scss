@@ -15,7 +15,7 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-
+//Manages custom svg icons 
 ion-icon {
     &[class*="custom-"] {
       mask-size: contain;
@@ -38,5 +38,39 @@ ion-icon {
       &[class*="cholesterol"] {
         mask-image: url(../assets/icon/cholesterol.svg);
       }
+      &[class*="dashboard"] {
+        mask-image: url(../assets/icon/dashboard.svg);
+      }
+      &[class*="prescription"] {
+        mask-image: url(../assets/icon/prescription.svg);
+      }
+      &[class*="appointment"] {
+        mask-image: url(../assets/icon/appointment.svg);
+      }
+      &[class*="sliderArrow"] {
+        mask-image: url(../assets/icon/slidingArrows.svg);
+      }
+      &[class*="charts"] {
+        mask-image: url(../assets/icon/charts.svg);
+      }
+      
   
   }
+
+  .scroll-content{
+    overflow-y:auto !important;
+  }
+
+  :focus {
+    outline: transparent !important;
+    /* or */
+  }
+
+  .comments {
+    color:gray;
+}
+
+.save-record-btn {
+    float:right;
+    
+}

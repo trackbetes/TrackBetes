@@ -1,0 +1,30 @@
+<ion-content padding>
+  <ion-list no-lines>
+    <ion-grid padding>
+      <ion-row>
+        <ion-col col-1>
+          <ion-icon name="mail" style="margin-top:45px;"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-1>
+          <ion-icon name="lock" style="margin-top:45px;"></ion-icon>
+        </ion-col>
+        <ion-col col-11>
+          <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+            </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <button ion-button block (click)="signIn(user)">Sign In</button>
+  </ion-list>
+  </ion-content>
+  

@@ -38,8 +38,12 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  yellow:     #FFFF00,
 );
+
+$alert-md-background-color:#488aff;
+$alert-md-border-radius:20px;
 
 
 // App iOS Variables

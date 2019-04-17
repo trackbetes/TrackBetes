@@ -1,0 +1,60 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Blood Sugar Level</ion-title>
+    <ion-buttons end>
+      <button ion-button color="danger" icon-only clear (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>Edit record</ion-list-header>
+    <ion-item padding>
+      <ion-input type="number" min="0" placeholder="{{concentrationLabel}} Concentration" [(ngModel)]="medicalRecord.value"></ion-input>
+      <ion-select interface="popover" (ionChange)="setConcentrationLabel($event)" [(ngModel)]="concentrationUnit">
+        <ion-option selected value="{{concentrationUnitType.molar}}">mmol/L</ion-option>
+        <ion-option value="{{concentrationUnitType.mass}}"> mg/dL</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-grid padding>
+      <ion-row>
+        <ion-item padding-right>
+          <ion-label>
+            <button ion-button icon-only clear color="dark">
+              <ion-icon name="calendar"></ion-icon>
+            </button>Select Date
+          </ion-label>
+          <ion-datetime placeholder="..." displayFormat="DD-MM-YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="medicalRecord.date" (ionChange)="dateChange($event)" min="2000"></ion-datetime>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item padding-right>
+          <ion-label>
+              <button ion-button icon-only color="dark" clear>
+                <ion-icon name="time"></ion-icon>
+              </button>Select Time
+            </ion-label>
+          <ion-datetime placeholder="..." displayFormat="h:mm A" pickerFormat="hh mm A" [(ngModel)]="medicalRecord.time" (ionChange)="timeChange($event)"></ion-datetime>
+        </ion-item>
+      </ion-row>
+    </ion-grid>
+    <ion-item padding>
+      <ion-label>Test type</ion-label>
+      <ion-select interface="popover" (ionChange)="setTestType($event)" [(ngModel)]="selectedTestType">
+        <ion-option selected value="{{testType.type1}}">Fasting</ion-option>
+        <ion-option value="{{testType.type2}}">Non fasting</ion-option>
+      </ion-select>
+    </ion-item>
+    <div class="comments" padding>
+      <ion-label>Comments...</ion-label>
+      <textarea class="form-control" rows="5" [(ngModel)]="medicalRecord.comments"></textarea>
+    </div>
+    <button ion-button (click)="saveRecord()" block margin-right>Save</button>
+  </ion-list>
+</ion-content>

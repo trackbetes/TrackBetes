@@ -1,0 +1,57 @@
+//creates a node in firebase which holds list of medical records
+       this.medicalrecordRef$ = this.afdb.list(`medicalRecords/${this.medicalRecord.patientId}/${this.MEDICALRECORDTYPE.bloodSugar}/${this.selectedTestType}`);
+
+      //adds medical record to list of records in firebase database
+      this.medicalrecordRef$.push({
+        value:this.convertConcentrationValue(),
+        date:this.medicalRecord.date,
+        time:this.medicalRecord.time,
+        testType:this.selectedTestType,
+        comments:this.medicalRecord.comments,
+        patientId:this.medicalRecord.patientId,
+      }).then(()=>{
+        toast.setMessage('New entry has been added successfully');
+        toast.setDuration(2000);
+        toast.setPosition('top');
+        toast.present();
+      }).catch((error)=> {
+        alert.setMessage(error.message);
+      })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      this.addedRecords.forEach((element) => {
+
+        //adds medical record to list of records in firebase database
+        this.getMedicalRecordsRef(element.testType).push({
+          value:element.value,
+          date:element.date,
+          time:element.time,
+          testType:element.testType,
+          comments:element.comments,
+          patientId:element.patientId,
+        }).then(()=>{
+          savedToAfdb = true;
+        }).catch((error)=> {
+          alert.setMessage(error.message);
+        })
+
+      });
+
+
+       

@@ -1,0 +1,21 @@
+<ion-header no-border>
+  <ion-navbar color="secondary">
+        <ion-title>
+            <ion-icon name="medkit" item-start></ion-icon>
+            TRACKBETES
+        </ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only menuToggle>
+              <ion-icon name="menu"></ion-icon>
+          </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-tabs tabsPlacement = "bottom" color="secondary" tabsHighlight="true" slide="right">
+        <ion-tab [root]="dashboardPage" tabTitle="Dashboard" tabIcon="custom-dashboard"></ion-tab>
+        <ion-tab [root]="doctorPatientsPage" tabTitle="Patients" tabIcon="person"></ion-tab>
+        <ion-tab [root]="appointmentsPage" tabTitle="Appointments" tabIcon="custom-appointment"></ion-tab>
+        <ion-tab [root]="messagesPage" tabTitle="Messages" tabIcon="chatboxes"></ion-tab>
+    </ion-tabs>
+</ion-content>

@@ -1,0 +1,16 @@
+<ion-header no-border>
+  <ion-navbar color="primary">
+      <ion-title>TRACKBETES</ion-title>
+      <ion-buttons end>
+          <button ion-button icon-only>
+              <ion-icon name="medkit" color="light"></ion-icon>
+          </button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+    <ion-tabs tabsPlacement = "bottom" color="primary" tabsHighlight="true" slide="right">
+        <ion-tab [root]="SignInPage" tabTitle="Sign In" tabIcon="log-in"></ion-tab>
+        <ion-tab [root]="SignUpPage" tabTitle="Sign Up" tabIcon="person-add"></ion-tab>
+    </ion-tabs>
+</ion-content>

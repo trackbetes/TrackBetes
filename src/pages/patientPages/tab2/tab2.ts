@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -15,11 +16,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Tab2Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  @ViewChild('lineCanvas') lineCanvas;
+  
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,) {
+
+    }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Tab2Page');
-  }
 
+  }
+  
 }

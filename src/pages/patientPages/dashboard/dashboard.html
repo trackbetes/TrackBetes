@@ -1,9 +1,62 @@
 <ion-content>
-  <div></div>
   <ion-fab bottom right>
     <button ion-fab (click)="medicalRecordsModal()">
       <ion-icon name="add"></ion-icon>
     </button>
   </ion-fab>
-  <div class="dashboardGraph"></div>
+  <!--<ion-card>
+    <ion-card-header>
+      Medical Records
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvas></canvas>
+    </ion-card-content>
+  </ion-card>-->
+  <ion-card> 
+    <ion-card-content no-padding class="card-content">
+      <ion-item>
+        <ion-label>Records type</ion-label>
+        <ion-select [(ngModel)]="selectedMedicalRecordsType" interface="action-sheet" (ionChange)=changeMedicalRecordsChart($event)>
+          <ion-option value="{{medicalRecordsType.bsFasting}}">Blood Sugar - Fasting</ion-option>
+          <ion-option value="{{medicalRecordsType.bsNonFasting}}">Blood Sugar - Non Fasting</ion-option>
+          <ion-option value="{{medicalRecordsType.bloodPressure}}">Blood Pressure</ion-option>
+        </ion-select>
+      </ion-item>
+      <chart [options]="chartOptions" type="chart"></chart>
+      <ion-grid padding>
+        <ion-row>
+          <ion-col>
+            <div>
+              <ion-col col-1>
+                <ion-icon name="color-filter" color="danger"></ion-icon>
+              </ion-col>
+              <ion-col col-11>Diabetes</ion-col>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-col col-1>
+                <ion-icon name="color-filter" color="yellow"></ion-icon>
+              </ion-col>
+              <ion-col col-11>Pre Diabetes</ion-col>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-col col-1>
+                <ion-icon name="color-filter" color="secondary"></ion-icon>
+              </ion-col>
+              <ion-col col-11>Normal</ion-col>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  <button ion-item (click)="openChartsPage()">
+    <ion-icon name="custom-charts" item-start></ion-icon>
+      Charts
+      <ion-icon name="arrow-dropright" item-end></ion-icon>
+
+  </button>
 </ion-content>

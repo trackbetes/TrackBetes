@@ -1,18 +1,80 @@
-<!--
-  Generated template for the BloodSugarLevelPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>bloodSugarLevel</ion-title>
+    <ion-title>Blood Sugar Level</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <ion-list>
+    <ion-fab right margin-top>
+      <button ion-fab color="secondary" (click)="saveRecord()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-fab>
+    <ion-list-header>Add new record</ion-list-header>
+    <ion-item padding>
+      <ion-input type="number" min="0" placeholder="{{concentrationLabel}} Concentration" [(ngModel)]="medicalRecord.value"></ion-input>
+      <ion-select interface="popover" (ionChange)="setConcentrationLabel($event)" [(ngModel)]="concentrationUnit">
+        <ion-option selected value="{{concentrationUnitType.molar}}">mmol/L</ion-option>
+        <ion-option value="{{concentrationUnitType.mass}}"> mg/dL</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-grid padding>
+      <ion-row>
+        <ion-item padding-right>
+          <ion-label>
+            <button ion-button icon-only clear color="dark">
+              <ion-icon name="calendar"></ion-icon>
+            </button>Select Date
+          </ion-label>
+          <ion-datetime placeholder="..." displayFormat="DD-MM-YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="medicalRecord.date" (ionChange)="dateChange($event)" min="2000"></ion-datetime>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item padding-right>
+          <ion-label>
+              <button ion-button icon-only color="dark" clear>
+                <ion-icon name="time"></ion-icon>
+              </button>Select Time
+            </ion-label>
+          <ion-datetime placeholder="..." displayFormat="h:mm A" pickerFormat="hh mm A" [(ngModel)]="medicalRecord.time" (ionChange)="timeChange($event)"></ion-datetime>
+        </ion-item>
+      </ion-row>
+    </ion-grid>
+    <ion-item padding>
+      <ion-label>Test type</ion-label>
+      <ion-select interface="popover" (ionChange)="setTestType($event)" [(ngModel)]="selectedTestType">
+        <ion-option selected value="{{testType.type1}}">Fasting</ion-option>
+        <ion-option value="{{testType.type2}}">Non fasting</ion-option>
+      </ion-select>
+    </ion-item>
+    <div class="comments" padding>
+      <ion-label>Comments...</ion-label>
+      <textarea class="form-control" rows="5" [(ngModel)]="medicalRecord.comments"></textarea>
+    </div>
+    <button ion-button (click)="addRecord()" block margin-right>Add</button>
+  </ion-list>
+  <ion-card *ngIf="addedRecords.length > 0">
+    <ion-card-header>Added Records</ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item-sliding *ngFor="let record of addedRecords" #slidingItem>
+          <button ion-item>{{record.value}}
+            <ion-icon name="custom-sliderArrow" item-end></ion-icon>
+          </button>
+          <ion-item-options>
+            <button ion-button icon-only clear color="secondary" (click)="editAddedRecord(record, slidingItem)">
+              <ion-icon name="create" ></ion-icon>
+            </button>
+            <button ion-button icon-only clear color="danger" (click)="deleteAddedRecord(record, slidingItem)">
+              <ion-icon name="trash" ></ion-icon>
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

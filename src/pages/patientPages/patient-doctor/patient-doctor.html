@@ -1,0 +1,90 @@
+
+<ion-content padding>
+
+    <div margin-top margin-bottom *ngIf="!userHasDoctor">
+        <ion-card>
+            <ion-card-content>
+                    
+                <h2>You have not been connected to any Doctor yet, please use the &#x2b; icon to start</h2>
+            </ion-card-content>
+        </ion-card>
+        <ion-fab center>
+            <button ion-fab icon-only (click)="openDoctorsListPage();">
+                <ion-icon name="add"></ion-icon>
+            </button>
+        </ion-fab>
+    </div>
+    
+    <div *ngIf="userHasDoctor">
+        <ion-card>
+            <ion-card-header>
+                Doctor Profile
+            </ion-card-header>
+            <ion-item>
+                <ion-avatar item-start>
+                    <img src="../../../assets//imgs//profil-pic_dummy.png">
+                </ion-avatar>
+                <h2>{{userDoctor.username}}</h2>
+                <h3>0269619643</h3>
+            </ion-item>
+            <ion-item-divider></ion-item-divider>
+            
+        </ion-card>
+        <ion-list>
+                <ion-list>
+                        <ion-item-sliding  #slidingItem>
+                            <ion-item>
+                                <ion-icon name="custom-appointment" item-start></ion-icon>
+                                    Appointments
+                                <ion-icon name="custom-sliderArrow" item-end></ion-icon>
+                            </ion-item>
+
+                          <ion-item-options>
+                            <button ion-button icon-only clear (click)="openAddAppointmentsModal()" color="secondary">
+                              <ion-icon name="add" ></ion-icon>
+                            </button>
+                            <button ion-button icon-only clear (click)="openAppointmentsPage()" color="dark">
+                              <ion-icon name="eye" ></ion-icon>
+                            </button>
+                          </ion-item-options>
+                        </ion-item-sliding>
+
+                        <ion-item-sliding  #slidingItem>
+                                <ion-item>
+                                    <ion-icon name="custom-insulin" item-start></ion-icon>
+                                        Prescriptions
+                                    <ion-icon name="custom-sliderArrow" item-end></ion-icon>
+                                </ion-item>
+    
+                              <ion-item-options>
+                                <button ion-button icon-only clear (click)="openAddAppointmentsModal()" color="secondary">
+                                  <ion-icon name="add" ></ion-icon>
+                                </button>
+                                <button ion-button icon-only clear (click)="openAppointmentsPage()" color="dark">
+                                  <ion-icon name="eye" ></ion-icon>
+                                </button>
+                              </ion-item-options>
+                            </ion-item-sliding>
+
+
+                            <ion-item-sliding  #slidingItem>
+                                    <ion-item>
+                                        <ion-icon name="chatboxes" item-start></ion-icon>
+                                            Messages
+                                        <ion-icon name="custom-sliderArrow" item-end></ion-icon>
+                                    </ion-item>
+        
+                                  <ion-item-options>
+                                    <button ion-button icon-only clear (click)="openAddAppointmentsModal()" color="secondary">
+                                      <ion-icon name="add" ></ion-icon>
+                                    </button>
+                                    <button ion-button icon-only clear (click)="openAppointmentsPage()" color="dark">
+                                      <ion-icon name="eye" ></ion-icon>
+                                    </button>
+                                  </ion-item-options>
+                                </ion-item-sliding>
+                    </ion-list>
+        </ion-list>
+
+    </div>
+</ion-content>

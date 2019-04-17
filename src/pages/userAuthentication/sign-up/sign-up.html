@@ -1,0 +1,65 @@
+<ion-content padding>
+      <ion-list no-lines>
+        <ion-grid padding>
+            <ion-row>
+                <ion-col col-1>
+                  <ion-icon name="person" style="margin-top:45px;"></ion-icon>
+                </ion-col>
+                <ion-col col-11>
+                  <ion-item>
+                    <ion-label floating>Username</ion-label>
+                    <ion-input type="text" [(ngModel)]="userProfile.username"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+          <ion-row>
+            <ion-col col-1>
+              <ion-icon name="mail" style="margin-top:45px;"></ion-icon>
+            </ion-col>
+            <ion-col col-11>
+              <ion-item>
+                <ion-label floating>Email</ion-label>
+                <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-1>
+              <ion-icon name="lock" style="margin-top:45px;"></ion-icon>
+            </ion-col>
+            <ion-col col-11>
+              <ion-item>
+                  <ion-label floating>Password</ion-label>
+                  <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+                </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col col-1>
+                <ion-icon name="lock" style="margin-top:45px;"></ion-icon>
+              </ion-col>
+              <ion-col col-11>
+                  <ion-item>
+                      <ion-label floating>Verify Password</ion-label>
+                      <ion-input type="password" [(ngModel)]="verifyPassword"></ion-input>
+                  </ion-item>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-1>
+              <ion-icon name="person" style="margin-top:45px;"></ion-icon>
+            </ion-col>
+              <ion-col col-11>
+              <ion-item>
+                  <ion-label floating>User Type</ion-label>
+                  <ion-select interface="action-sheet" [(ngModel)]="userProfile.usertype">
+                    <ion-option value="patient">Patient</ion-option>
+                    <ion-option value="doctor">Doctor</ion-option>
+                  </ion-select>
+            </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <button ion-button block (click)="createAccount(user)">Create Account</button>
+      </ion-list>
+  </ion-content>

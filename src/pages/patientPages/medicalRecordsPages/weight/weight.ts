@@ -15,11 +15,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class WeightPage {
 
+  weightValue:number;
+  comments:string;
+
+  //current date and time constants
+  currentDate: string = new Date().toISOString();
+  currentTime: string = new Date().toISOString();
+
+  //Datetime Picker
+  public dateTime = {
+    date: this.currentDate,
+    time: this.currentTime,
+  }
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad WeightPage');
+  saveRecord() {
+    let record = {
+      name:'Weight',
+      value:this.weightValue,
+      date:this.dateTime.date,
+      time:this.dateTime.time,
+      comments:this.comments,
+    }
+
+    console.log(record);
   }
 
 }
