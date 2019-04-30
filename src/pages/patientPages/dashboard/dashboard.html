@@ -53,10 +53,22 @@
       </ion-grid>
     </ion-card-content>
   </ion-card>
-  <button ion-item (click)="openChartsPage()">
+  <button ion-item (click)="openChartsPage()" no-lines>
     <ion-icon name="custom-charts" item-start></ion-icon>
       Charts
-      <ion-icon name="arrow-dropright" item-end></ion-icon>
-
+    <ion-icon name="arrow-dropright" item-end></ion-icon>
   </button>
+  <ion-card (click)="openProfilePage()">
+    <ion-card-title align="center">Profile</ion-card-title>
+    <ion-card-content>
+        <ion-avatar>
+            <img src="assets/imgs/profile-pic_dummy.png">
+        </ion-avatar>
+        <div align="center">
+            <p>{{patient.username}}</p>
+            <p>{{patient.email}}</p>
+            <p>{{patient.mobile}}</p>
+        </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

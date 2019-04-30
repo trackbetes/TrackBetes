@@ -1,0 +1,40 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-buttons left>
+        <button ion-button icon-only color="danger" (click)="closeModal()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title align="center">Institution & Speciality</ion-title>
+      <ion-buttons right>
+        <button ion-button icon-only color="secondary" (click)="saveProfile()">
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Speciality</ion-label>
+      <ion-input type="text" [(ngModel)]="doctor.speciality"></ion-input>
+    </ion-item>
+    <ion-title margin-top>Institution</ion-title>
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" [(ngModel)]="doctor.institutionName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-input type="text" [(ngModel)]="doctor.institutionAddress"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Mobile</ion-label>
+      <ion-input type="text" [(ngModel)]="doctor.institutionMobile"></ion-input>
+    </ion-item>
+  </ion-list>
+</ion-content>

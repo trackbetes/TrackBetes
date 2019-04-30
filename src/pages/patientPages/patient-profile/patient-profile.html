@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title align="center">Profile</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only color="secondary" (click)="saveProfile()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-avatar>
+        <img src="assets/imgs/profile-pic_dummy.png">
+    </ion-avatar>
+    <p align="center">Change Photo</p>
+    <ion-item>
+      <ion-label floating>Username</ion-label>
+      <ion-input type="text" [(ngModel)]="patient.username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Official Name</ion-label>
+      <ion-input type="text" [(ngModel)]="patient.officialName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="patient.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Mobile</ion-label>
+      <ion-input type="text" [(ngModel)]="patient.mobile"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Gender</ion-label>
+      <ion-select interface="action-sheet" [(ngModel)]="patient.gender">
+        <ion-option value="male">Male</ion-option>
+        <ion-option value="female">Female</ion-option>
+        <ion-option value="other">Other</ion-option>
+      </ion-select>
+    </ion-item> 
+  </ion-list>
+
+</ion-content>

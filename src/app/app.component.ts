@@ -1,3 +1,5 @@
+import { AddPatientAppointmentsPage } from './../pages/patientPages/add-patient-appointments/add-patient-appointments';
+import { DoctorPersonalnContactProfilePage } from './../pages/doctor/doctor-personaln-contact-profile/doctor-personaln-contact-profile';
 import { BloodSugarChartPage } from './../pages/patientPages/blood-sugar-chart/blood-sugar-chart';
 import { PatientChartsPage } from './../pages/patientPages/patient-charts/patient-charts';
 import { environment } from './../credentials';
@@ -13,12 +15,15 @@ import { DoctorTabsPage } from '../pages/doctor/doctor-tabs/doctor-tabs';
 import { TabsPage } from '../pages/patientPages/tabs/tabs';
 import * as firebase from 'firebase';
 import { EditBloodSugarLevelPage } from '../pages/patientPages/medicalRecordsPages/edit-blood-sugar-level/edit-blood-sugar-level';
+import { DoctorDashboardPage } from '../pages/doctor/doctor-dashboard/doctor-dashboard';
+import { DoctorProfilePage } from '../pages/doctor/doctor-profile/doctor-profile';
+import { DoctorInstitutionnSpecialityProfilePage } from '../pages/doctor/doctor-institutionn-speciality-profile/doctor-institutionn-speciality-profile';
 @Component({
   templateUrl: 'app.html',
 })
 export class MyApp {
   
-  rootPage:any = BloodSugarChartPage;
+  rootPage:any = AddPatientAppointmentsPage;
 
   @ViewChild(Nav) nav:Nav;
 

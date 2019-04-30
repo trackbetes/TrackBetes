@@ -3,7 +3,9 @@
   <ion-navbar>
     <ion-title>bloodSugarChart</ion-title>
     <ion-buttons end>
-      <button ion-button color="danger" (click)="closeModal()">Close</button>
+      <button ion-button color="danger" (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
     </ion-buttons>
   </ion-navbar>
 
@@ -11,5 +13,15 @@
 
 
 <ion-content padding>
-
+<ion-card-title align="center">Blood Sugar/ Fasting</ion-card-title>
+  <ion-card-content no-padding>
+    <ion-spinner name="bubbles" *ngIf="!dismissBSFastingSpinner"></ion-spinner>
+    <chart [options]="bsFastingChartOptions" type="chart"></chart>
+  </ion-card-content>
+  <ion-item-divider></ion-item-divider>
+  <ion-card-title align="center">Blood Sugar/ Non Fasting</ion-card-title>
+  <ion-card-content no-padding>
+    <ion-spinner name="bubbles" *ngIf="!dismissBSNonFastingSpinner"></ion-spinner>
+    <chart [options]="bsNonFastingChartOptions" type="chart"></chart>
+  </ion-card-content>
 </ion-content>

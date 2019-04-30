@@ -1,3 +1,4 @@
+import { DoctorProfilePage } from './../pages/doctor/doctor-profile/doctor-profile';
 import { CholesterolChartPage } from './../pages/patientPages/cholesterol-chart/cholesterol-chart';
 import { WeightChartPage } from './../pages/patientPages/weight-chart/weight-chart';
 import { BloodPressureChartPage } from './../pages/patientPages/blood-pressure-chart/blood-pressure-chart';
@@ -52,6 +53,10 @@ import { ChartModule } from 'angular2-highcharts';
 import * as Highcharts from 'highcharts';
 import { DoctorsListPage } from '../pages/patientPages/doctors-list/doctors-list';
 import { EditBloodSugarLevelPage } from '../pages/patientPages/medicalRecordsPages/edit-blood-sugar-level/edit-blood-sugar-level';
+import { DoctorPersonalnContactProfilePage } from '../pages/doctor/doctor-personaln-contact-profile/doctor-personaln-contact-profile';
+import { DoctorEducationnExperienceProfilePage } from '../pages/doctor/doctor-educationn-experience-profile/doctor-educationn-experience-profile';
+import { DoctorInstitutionnSpecialityProfilePage } from '../pages/doctor/doctor-institutionn-speciality-profile/doctor-institutionn-speciality-profile';
+import { PatientProfilePage } from '../pages/patientPages/patient-profile/patient-profile';
 @NgModule({
   declarations: [
     MyApp,
@@ -77,6 +82,7 @@ import { EditBloodSugarLevelPage } from '../pages/patientPages/medicalRecordsPag
     BloodPressureChartPage,
     WeightChartPage,
     CholesterolChartPage,
+    PatientProfilePage,
     
     
     MedicalRecordsModalPage,
@@ -94,7 +100,11 @@ import { EditBloodSugarLevelPage } from '../pages/patientPages/medicalRecordsPag
     DoctorPrescriptionsPage,
     DoctorAppointmentsPage,
     DoctorMessagesPage,
-    DoctorPatientsPage
+    DoctorPatientsPage,
+    DoctorProfilePage,
+    DoctorPersonalnContactProfilePage,
+    DoctorEducationnExperienceProfilePage,
+    DoctorInstitutionnSpecialityProfilePage
 
     
   ],
@@ -133,6 +143,7 @@ import { EditBloodSugarLevelPage } from '../pages/patientPages/medicalRecordsPag
     BloodPressureChartPage,
     WeightChartPage,
     CholesterolChartPage,
+    PatientProfilePage,
 
     
     
@@ -156,7 +167,11 @@ import { EditBloodSugarLevelPage } from '../pages/patientPages/medicalRecordsPag
     DoctorPrescriptionsPage,
     DoctorAppointmentsPage,
     DoctorMessagesPage,
-    DoctorPatientsPage
+    DoctorPatientsPage,
+    DoctorProfilePage,
+    DoctorPersonalnContactProfilePage,
+    DoctorEducationnExperienceProfilePage,
+    DoctorInstitutionnSpecialityProfilePage
 
   ],
   providers: [

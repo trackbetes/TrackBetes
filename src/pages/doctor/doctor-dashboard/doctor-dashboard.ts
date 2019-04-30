@@ -1,3 +1,4 @@
+import { DoctorProfilePage } from './../doctor-profile/doctor-profile';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
@@ -16,6 +17,8 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
   templateUrl: 'doctor-dashboard.html',
 })
 export class DoctorDashboardPage {
+
+  doctor = {} as Doctor;
 
   patientsList = [];
 
@@ -63,9 +66,17 @@ export class DoctorDashboardPage {
           this.userHasPatients = false;
           loading.dismiss();
         }
+
+        this.doctor = userData;
       });
       
      });
+
+     
+  }
+
+  openProfilePage() {
+    this.navCtrl.push(DoctorProfilePage);
   }
 
   openPatientPage(){

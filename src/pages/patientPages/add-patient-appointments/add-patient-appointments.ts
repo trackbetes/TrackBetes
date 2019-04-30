@@ -1,5 +1,7 @@
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ToastController } from 'ionic-angular';
 
 /**
  * Generated class for the AddPatientAppointmentsPage page.
@@ -15,11 +17,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AddPatientAppointmentsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtlr: ViewController,
+    private afdb: AngularFireDatabase,
+    private afAuth: AngularFireAuth,
+    private toastCtlr: ToastController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddPatientAppointmentsPage');
+    
+  }
+
+  closeModal() {
+    this.viewCtlr.dismiss();
   }
 
 }

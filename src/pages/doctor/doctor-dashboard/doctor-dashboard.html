@@ -1,11 +1,11 @@
 
-<ion-content padding>
+<ion-content>
     <ion-card>
       <ion-card-header>Patients</ion-card-header>
       <ion-card-content *ngIf="userHasPatients" no-padding>
             <ion-item *ngFor="let patient of patientsList" (click)="openPatientModal()" lines>
                 <ion-avatar item-start>
-                    <img src="../../../assets//imgs//profil-pic_dummy.png">
+                    <img src="assets/imgs/profile-pic_dummy.png">
                 </ion-avatar>
                 {{patient.username}}
                 <ion-icon name="arrow-dropright" item-end></ion-icon>
@@ -22,7 +22,20 @@
     </ion-card>
     <ion-card>
         <ion-card-header>Appointments</ion-card-header>
-        <ion-card-content></ion-card-content>
-            
+        <ion-card-content></ion-card-content>     
     </ion-card>
+
+    <ion-card (click)="openProfilePage()">
+        <ion-card-title align="center">Profile</ion-card-title>
+        <ion-card-content>
+            <ion-avatar>
+                <img src="assets/imgs/profile-pic_dummy.png">
+            </ion-avatar>
+            <div align="center">
+                <p>{{doctor.username}}</p>
+                <p>{{doctor.mobile}}</p>
+            </div>
+        </ion-card-content>
+    </ion-card>
+
 </ion-content>

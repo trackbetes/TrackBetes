@@ -1,3 +1,4 @@
+import { AddPatientAppointmentsPage } from './../add-patient-appointments/add-patient-appointments';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { UserProfile } from './../../../models/UserProfile';
 import { Component } from '@angular/core';
@@ -26,6 +27,8 @@ export class PatientDoctorPage {
   userDoctor:any;
 
   userHasDoctor:boolean = false;
+
+  modal:any;
 
 
   constructor(
@@ -72,6 +75,11 @@ export class PatientDoctorPage {
 
   openAppointmentsPage(){
     this.navCtrl.parent.select(2);
+  }
+
+  openAddAppointmentsModal() {
+    this.modal = this.modalFunc(AddPatientAppointmentsPage);
+    this.modal.present();
   }
 
   openPrescriptionsPage() {

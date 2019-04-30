@@ -1,11 +1,13 @@
+import { Patient } from './../../../models/Pateint';
 import { PatientChartsPage } from './../patient-charts/patient-charts';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component,ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, LoadingController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { MedicalRecordsModalPage } from '../medical-records-modal/medical-records-modal';
 import * as moment from 'moment';
 import { MedicalRecord } from '../../../models/MedicalRecord';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { PatientProfilePage } from '../patient-profile/patient-profile';
 
 
 @IonicPage()
@@ -23,6 +25,8 @@ export class DashboardPage {
     @ViewChild('barCanvas') barCanvas;
 
     currentUserId:any;
+
+    patient = {} as Patient;
 
     bloodSugarRecordsRef$ : FirebaseListObservable<MedicalRecord[]>;
 
@@ -94,6 +98,11 @@ export class DashboardPage {
                 loading.dismiss();
                 this.medicalRecordsChart();
             });
+
+            //get patient data
+            this.afdb.object(`patients/${this.currentUserId}`).subscribe((patient) => {
+                this.patient = patient;
+            })
         });
     }
 
@@ -170,6 +179,10 @@ export class DashboardPage {
 
     openChartsPage() {
         this.navCtrl.push(PatientChartsPage);
+    }
+
+    openProfilePage() {
+        this.navCtrl.push(PatientProfilePage);
     }
 
    
