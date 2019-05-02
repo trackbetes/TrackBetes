@@ -72,9 +72,22 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card (click)="openAppointmentsPage()">
-    <ion-card-title align="center">Appointments</ion-card-title>
+  <ion-card>
+    <ion-card-title align="center">
+        <ion-buttons float-left (click)="openAppointmentsPage()">
+          <button ion-button icon-only color="dark" clear>
+            <ion-icon name="eye"></ion-icon>
+          </button>
+        </ion-buttons>
+      Appointments
+      <ion-buttons float-right (click)="openAddAppointmentsModal()">
+        <button ion-button icon-only clear color="secondary">
+          <ion-icon name="add"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-card-title>
     <ion-card-content *ngIf="appointments.length > 0">
+        <h2><b>Recents</b></h2>
         <ion-item *ngFor="let appointment of appointments">
           <p>{{appointment.title}}</p>
           <p>{{appointment.date}}</p>

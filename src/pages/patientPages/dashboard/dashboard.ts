@@ -9,6 +9,8 @@ import { MedicalRecord } from '../../../models/MedicalRecord';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { PatientProfilePage } from '../patient-profile/patient-profile';
 import { Appointment } from '../../../models/Appointment';
+import { PatientAppointmentsPage } from '../patient-appointments/patient-appointments';
+import { AddPatientAppointmentsPage } from '../add-patient-appointments/add-patient-appointments';
 
 
 @IonicPage()
@@ -53,6 +55,8 @@ export class DashboardPage {
         type1: 'fasting',
         type2: 'non fasting',
     }
+
+    modal:any;
 
     
   constructor(
@@ -113,7 +117,7 @@ export class DashboardPage {
             //get patient's appointments
             this.afdb.list(`appointments/${this.currentUserId}`, {
                 query: {
-                    orderByChild: 'date'
+                    limitToLast: 3,
                 }
             }).subscribe((appointments) => {
                 this.appointments = [];
@@ -200,8 +204,18 @@ export class DashboardPage {
     }
 
     openProfilePage() {
-        let modal = this.modalFunc(PatientProfilePage);
-        modal.present();
+        this.modal = this.modalFunc(PatientProfilePage);
+        this.modal.present();
+    }
+
+    openAppointmentsPage() {
+        this.navCtrl.push(PatientAppointmentsPage);
+    }
+
+    openAddAppointmentsModal() {
+        
+        this.modal = this.modalFunc(AddPatientAppointmentsPage);
+        this.modal.present();
     }
 
     modalFunc(modalPage) {
