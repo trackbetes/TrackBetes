@@ -1,3 +1,4 @@
+import { EditPatientAppointmentPage } from './../pages/edit-patient-appointment/edit-patient-appointment';
 import { DoctorProfilePage } from './../pages/doctor/doctor-profile/doctor-profile';
 import { CholesterolChartPage } from './../pages/patientPages/cholesterol-chart/cholesterol-chart';
 import { WeightChartPage } from './../pages/patientPages/weight-chart/weight-chart';
@@ -57,6 +58,7 @@ import { DoctorPersonalnContactProfilePage } from '../pages/doctor/doctor-person
 import { DoctorEducationnExperienceProfilePage } from '../pages/doctor/doctor-educationn-experience-profile/doctor-educationn-experience-profile';
 import { DoctorInstitutionnSpecialityProfilePage } from '../pages/doctor/doctor-institutionn-speciality-profile/doctor-institutionn-speciality-profile';
 import { PatientProfilePage } from '../pages/patientPages/patient-profile/patient-profile';
+import { DoctorsListProfilePage } from '../pages/patientPages/doctors-list-profile/doctors-list-profile';
 @NgModule({
   declarations: [
     MyApp,
@@ -77,12 +79,14 @@ import { PatientProfilePage } from '../pages/patientPages/patient-profile/patien
     DoctorsListPage,
     PatientAppointmentsPage,
     AddPatientAppointmentsPage,
+    EditPatientAppointmentPage,
     PatientChartsPage,
     BloodSugarChartPage,
     BloodPressureChartPage,
     WeightChartPage,
     CholesterolChartPage,
     PatientProfilePage,
+    DoctorsListProfilePage,
     
     
     MedicalRecordsModalPage,
@@ -138,12 +142,14 @@ import { PatientProfilePage } from '../pages/patientPages/patient-profile/patien
     DoctorsListPage,
     PatientAppointmentsPage,
     AddPatientAppointmentsPage,
+    EditPatientAppointmentPage,
     PatientChartsPage,
     BloodSugarChartPage,
     BloodPressureChartPage,
     WeightChartPage,
     CholesterolChartPage,
     PatientProfilePage,
+    DoctorsListProfilePage,
 
     
     

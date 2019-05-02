@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit Appointment</ion-title>
+    <ion-buttons end>
+      <button ion-button color="danger" icon-only clear (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+      <ion-item>
+        <ion-label floating>Title</ion-label>
+        <ion-input type="text" [(ngModel)]="appointment.title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime placeholder="..." displayFormat="DD-MM-YYYY" pickerFormat="DD MM YYYY" min="2000" [(ngModel)]="appointment.date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Time</ion-label>
+        <ion-datetime placeholder="..." displayFormat="h:mm A" pickerFormat="hh mm A" [(ngModel)]="appointment.time"></ion-datetime>
+      </ion-item>
+      <div class="comments">
+        <ion-label>Message...</ion-label>
+        <textarea class="form-control" rows="5" [(ngModel)]="appointment.message"></textarea>
+      </div>
+      <button (click)="saveAppointment()" ion-button block margin-top>Save Appointment</button>
+    </ion-list>
+</ion-content>

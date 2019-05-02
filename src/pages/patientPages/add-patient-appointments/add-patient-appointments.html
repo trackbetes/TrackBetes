@@ -21,19 +21,41 @@
     <ion-list>
         <ion-item>
           <ion-label floating>Title</ion-label>
-          <ion-input type="text" ></ion-input>
+          <ion-input type="text" [(ngModel)]="appointments.title"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label floating>Doctor's name</ion-label>
-          <ion-input type="text" ></ion-input>
+          <ion-label>Date</ion-label>
+          <ion-datetime placeholder="..." displayFormat="DD-MM-YYYY" pickerFormat="DD MM YYYY" min="2000" [(ngModel)]="appointments.date"></ion-datetime>
         </ion-item>
         <ion-item>
-          <ion-label floating>Title</ion-label>
-          <ion-input type="text" ></ion-input>
+          <ion-label>Time</ion-label>
+          <ion-datetime placeholder="..." displayFormat="h:mm A" pickerFormat="hh mm A" [(ngModel)]="appointments.time"></ion-datetime>
         </ion-item>
-        <div class="comments" padding>
-          <ion-label>Note...</ion-label>
-          <textarea class="form-control" rows="5" ></textarea>
+        <div class="comments">
+          <ion-label>Message...</ion-label>
+          <textarea class="form-control" rows="5" [(ngModel)]="appointments.message"></textarea>
         </div>
+        <button (click)="addAppointment()" ion-button block margin-top>Add Appointment</button>
+
+        <ion-card *ngIf="addedAppointments.length > 0">
+          <ion-card-header>Added Appointments</ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item-sliding *ngFor="let appointment of addedAppointments" #slidingItem>
+                <button ion-item>{{appointment.title}}
+                  <ion-icon name="custom-sliderArrow" item-end></ion-icon>
+                </button>
+                <ion-item-options>
+                  <button ion-button icon-only clear color="secondary" (click)="editAddedAppointment(appointment, slidingItem)">
+                    <ion-icon name="create" ></ion-icon>
+                  </button>
+                  <button ion-button icon-only clear color="danger" (click)="deleteAddedAppointment(appointment, slidingItem)">
+                    <ion-icon name="trash" ></ion-icon>
+                  </button>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
       </ion-list>
 </ion-content>

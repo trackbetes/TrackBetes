@@ -1,6 +1,11 @@
 <ion-header>
 
   <ion-navbar>
+    <ion-buttons left>
+      <button ion-button icon-only color="danger" (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title align="center">Profile</ion-title>
     <ion-buttons right>
       <button ion-button icon-only color="secondary" (click)="saveProfile()">

@@ -25,7 +25,7 @@
                     <img src="assets/imgs/profile-pic_dummy.png">
                 </ion-avatar>
                 <h2>{{userDoctor.username}}</h2>
-                <h3>0269619643</h3>
+                <h3>{{userDoctor.mobile}}</h3>
             </ion-item>
             <ion-item-divider></ion-item-divider>
             
@@ -40,10 +40,10 @@
                             </ion-item>
 
                           <ion-item-options>
-                            <button ion-button icon-only clear (click)="openAddAppointmentsModal()" color="secondary">
+                            <button ion-button icon-only clear (click)="openAddAppointmentsModal(slidingItem)" color="secondary">
                               <ion-icon name="add" ></ion-icon>
                             </button>
-                            <button ion-button icon-only clear (click)="openAppointmentsPage()" color="dark">
+                            <button ion-button icon-only clear (click)="openAppointmentsPage(slidingItem)" color="dark">
                               <ion-icon name="eye" ></ion-icon>
                             </button>
                           </ion-item-options>

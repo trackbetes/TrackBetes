@@ -1,7 +1,8 @@
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ItemSliding, AlertController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ItemSliding, AlertController, ToastController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
+import { DoctorsListProfilePage } from '../doctors-list-profile/doctors-list-profile';
 
 /**
  * Generated class for the DoctorsListPage page.
@@ -29,7 +30,9 @@ export class DoctorsListPage {
      private afAuth: AngularFireAuth,
      private loadingCtlr: LoadingController,
      private alertCtlr: AlertController,
-     private toastCtlr: ToastController) {
+     private toastCtlr: ToastController,
+     private modalCtlr: ModalController,) {
+      
   }
 
   ionViewDidLoad() {
@@ -64,6 +67,7 @@ export class DoctorsListPage {
         //check if user already has a doctor
         if (data.doctorId) {
           alert.setMessage('You have already been assigned a doctor');
+          alert.setBackButtonText('ok');
         }else{
 
           //if user has no doctor, the selected doctor is added 
@@ -106,7 +110,9 @@ export class DoctorsListPage {
     slidingItem.close();
   }
 
-  viewDoctorProfile(doctor, slidingItem: ItemSliding) {
+  viewDoctorProfile(doctor, slidingItem: ItemSliding,) {
+    let modal = this.modalCtlr.create(DoctorsListProfilePage, {doctor: doctor});
+    modal.present();
     slidingItem.close();
   }
 

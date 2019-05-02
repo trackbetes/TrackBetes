@@ -1,3 +1,5 @@
+import { PatientAppointmentsPage } from './../pages/patientPages/patient-appointments/patient-appointments';
+import { DoctorsListProfilePage } from './../pages/patientPages/doctors-list-profile/doctors-list-profile';
 import { AddPatientAppointmentsPage } from './../pages/patientPages/add-patient-appointments/add-patient-appointments';
 import { DoctorPersonalnContactProfilePage } from './../pages/doctor/doctor-personaln-contact-profile/doctor-personaln-contact-profile';
 import { BloodSugarChartPage } from './../pages/patientPages/blood-sugar-chart/blood-sugar-chart';
@@ -18,12 +20,13 @@ import { EditBloodSugarLevelPage } from '../pages/patientPages/medicalRecordsPag
 import { DoctorDashboardPage } from '../pages/doctor/doctor-dashboard/doctor-dashboard';
 import { DoctorProfilePage } from '../pages/doctor/doctor-profile/doctor-profile';
 import { DoctorInstitutionnSpecialityProfilePage } from '../pages/doctor/doctor-institutionn-speciality-profile/doctor-institutionn-speciality-profile';
+import { DoctorsListPage } from '../pages/patientPages/doctors-list/doctors-list';
 @Component({
   templateUrl: 'app.html',
 })
 export class MyApp {
   
-  rootPage:any = AddPatientAppointmentsPage;
+  rootPage:any = TabsPage;
 
   @ViewChild(Nav) nav:Nav;
 

@@ -8,6 +8,7 @@ import * as moment from 'moment';
 import { MedicalRecord } from '../../../models/MedicalRecord';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { PatientProfilePage } from '../patient-profile/patient-profile';
+import { Appointment } from '../../../models/Appointment';
 
 
 @IonicPage()
@@ -31,6 +32,10 @@ export class DashboardPage {
     bloodSugarRecordsRef$ : FirebaseListObservable<MedicalRecord[]>;
 
     bloodSugarRecords = [];
+
+    appointmentsRef$ : FirebaseListObservable<Appointment[]>; 
+
+    appointments = [];
 
     chartOptions : any;
 
@@ -73,6 +78,7 @@ export class DashboardPage {
 
     ionViewDidLoad(){
         this.showMedicalRecordsChart();
+        
     }
 
     loadingFunc(){
@@ -99,9 +105,21 @@ export class DashboardPage {
                 this.medicalRecordsChart();
             });
 
-            //get patient data
+            //get patient's data
             this.afdb.object(`patients/${this.currentUserId}`).subscribe((patient) => {
                 this.patient = patient;
+            })
+
+            //get patient's appointments
+            this.afdb.list(`appointments/${this.currentUserId}`, {
+                query: {
+                    orderByChild: 'date'
+                }
+            }).subscribe((appointments) => {
+                this.appointments = [];
+                appointments.forEach( (appointment) => {
+                    this.appointments.push(appointment);
+                });
             })
         });
     }
@@ -182,7 +200,12 @@ export class DashboardPage {
     }
 
     openProfilePage() {
-        this.navCtrl.push(PatientProfilePage);
+        let modal = this.modalFunc(PatientProfilePage);
+        modal.present();
+    }
+
+    modalFunc(modalPage) {
+        return this.modalCtlr.create(modalPage);
     }
 
    

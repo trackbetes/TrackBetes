@@ -77,7 +77,8 @@ export class PatientDoctorPage {
     this.navCtrl.parent.select(2);
   }
 
-  openAddAppointmentsModal() {
+  openAddAppointmentsModal(slidingItem: ItemSliding) {
+    slidingItem.close();
     this.modal = this.modalFunc(AddPatientAppointmentsPage);
     this.modal.present();
   }

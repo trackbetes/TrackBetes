@@ -234,6 +234,7 @@ export class BloodSugarLevelPage {
       let index = 0;
       let count = 0;
       loading.present();
+      
       for(index; index < this.addedRecords.length; index++) {
          //adds medical record to list of records in firebase database
          this.getMedicalRecordsRef(this.addedRecords[index].testType).push({

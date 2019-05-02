@@ -57,7 +57,7 @@
     <ion-icon name="custom-charts" item-start></ion-icon>
       Charts
     <ion-icon name="arrow-dropright" item-end></ion-icon>
-  </button>
+  </button><hr margin-left margin-right>
   <ion-card (click)="openProfilePage()">
     <ion-card-title align="center">Profile</ion-card-title>
     <ion-card-content>
@@ -69,6 +69,16 @@
             <p>{{patient.email}}</p>
             <p>{{patient.mobile}}</p>
         </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card (click)="openAppointmentsPage()">
+    <ion-card-title align="center">Appointments</ion-card-title>
+    <ion-card-content *ngIf="appointments.length > 0">
+        <ion-item *ngFor="let appointment of appointments">
+          <p>{{appointment.title}}</p>
+          <p>{{appointment.date}}</p>
+        </ion-item>
     </ion-card-content>
   </ion-card>
 </ion-content>
