@@ -2,10 +2,41 @@
   <ion-navbar>
     <ion-title>Appointments</ion-title>
   </ion-navbar>
-  <button ion-item *ngFor="let appointment of appointments">
-    <p><b>{{appointment.title}}</b></p>
-    <p>{{appointment.date}}</p>
-    <p>{{appointment.time}}</p>
-    <p>{{appointment.message}}</p>
-  </button>
+  <div *ngIf="appointments.length > 0">
+    <ion-card *ngFor="let appointment of appointments">
+      <ion-card-content>
+        <ion-grid padding-right padding-left>
+          <ion-row>
+            <ion-col col-8 align="left">
+              <h2><b>{{appointment.title}}</b></h2>
+            </ion-col>
+            <ion-col col-4 align="right">
+              <h3><b>{{appointment.date}}</b></h3>
+              <p>{{appointment.time}}</p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+          <ion-card-content style="border:thin solid black; border-radius:5px;">
+            {{appointment.message}}
+          </ion-card-content>
+      </ion-card-content>
+      <ion-buttons end (click)="deleteAppointment(appointment)">
+        <button icon-only ion-button clear color="danger" >
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-card>
+  </div>
+  <div *ngIf="appointments.length <= 0">
+    <ion-card>
+      <ion-card-content>
+          <p>You do not have any appointement, you can use the plus button to add one</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-fab center middle>
+      <button ion-fab (click)="openAddAppointmentsModal()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+  </div>
 </ion-content>

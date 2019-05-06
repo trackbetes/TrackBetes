@@ -31,6 +31,8 @@ export class AddPatientAppointmentsPage {
 
   currentUserId;
 
+  doctorId;
+
   messages = {
     emptyFields:'You forgot to fill one or more fields, please check and try again',
     addedEntry:'New appointments have been added successfully',
@@ -56,6 +58,12 @@ export class AddPatientAppointmentsPage {
     //gets id of current user
     this.afAuth.authState.subscribe((auth) => {
       this.currentUserId = auth.uid;
+
+      //get patient's doctor
+      this.afdb.object(`patients/${this.currentUserId}`).subscribe((userData) => {
+        this.doctorId = userData.doctorId;
+      })
+
     });
 
     //assigns current date and time
@@ -97,10 +105,11 @@ export class AddPatientAppointmentsPage {
         //adds appointments to list of appointments in firebase database
         this.getAppointmentsRef().push({
          title:this.addedAppointments[index].title,
-         date:this.addedAppointments[index].date,
-         time:this.addedAppointments[index].time,
+         date:moment(this.addedAppointments[index].date).format('DD-MM-YYYY'),
+         time:moment(this.addedAppointments[index].time).format('h:mm:a'),
          message:this.addedAppointments[index].message,
        }).then((index)=>{
+        
          count++;
          if(count === this.addedAppointments.length) {
            savedRecordToAfdb = true;
@@ -111,9 +120,20 @@ export class AddPatientAppointmentsPage {
            toast.present();
            this.viewCtlr.dismiss();
          }
-       }).catch((error)=> {
+
+        
+
+      }).catch((error)=> {
          alert.setMessage(error.message);
        })
+
+        this.getDoctorAppointmentsRef().push({
+          title:this.addedAppointments[index].title,
+          date:moment(this.addedAppointments[index].date).format('DD-MM-YYYY'),
+          time:moment(this.addedAppointments[index].time).format('h:mm:a'),
+          message:this.addedAppointments[index].message,
+        })
+
      }
 
     }
@@ -181,6 +201,10 @@ export class AddPatientAppointmentsPage {
     //creates a node in firebase which holds list of appointments
     return this.afdb.list(`appointments/${this.currentUserId}`);
      
+  }
+
+  getDoctorAppointmentsRef() {
+    return this.afdb.list(`doctors/${this.doctorId}/appointments/${this.currentUserId}`);
   }
 
   validatedInputs(): boolean{

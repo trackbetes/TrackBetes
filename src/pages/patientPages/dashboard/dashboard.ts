@@ -117,13 +117,15 @@ export class DashboardPage {
             //get patient's appointments
             this.afdb.list(`appointments/${this.currentUserId}`, {
                 query: {
-                    limitToLast: 3,
+                    limitToLast : 3
                 }
             }).subscribe((appointments) => {
                 this.appointments = [];
-                appointments.forEach( (appointment) => {
-                    this.appointments.push(appointment);
-                });
+
+                //push appointments into appointments array in desc order
+                for (let index = appointments.length -1; index >= 0; index--) {
+                    this.appointments.push(appointments[index]); 
+                }
             })
         });
     }

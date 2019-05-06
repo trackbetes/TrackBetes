@@ -56,7 +56,7 @@
   <button ion-item (click)="openChartsPage()" no-lines>
     <ion-icon name="custom-charts" item-start></ion-icon>
       Charts
-    <ion-icon name="arrow-dropright" item-end></ion-icon>
+      <ion-icon name="arrow-dropright" item-end></ion-icon>
   </button><hr margin-left margin-right>
   <ion-card (click)="openProfilePage()">
     <ion-card-title align="center">Profile</ion-card-title>
@@ -72,7 +72,7 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card>
+  <ion-card margin-bottom>
     <ion-card-title align="center">
         <ion-buttons float-left (click)="openAppointmentsPage()">
           <button ion-button icon-only color="dark" clear>
@@ -86,12 +86,32 @@
         </button>
       </ion-buttons>
     </ion-card-title>
-    <ion-card-content *ngIf="appointments.length > 0">
-        <h2><b>Recents</b></h2>
-        <ion-item *ngFor="let appointment of appointments">
-          <p>{{appointment.title}}</p>
-          <p>{{appointment.date}}</p>
-        </ion-item>
+    <ion-card-content>
+        <div *ngIf="appointments.length > 0">
+          <ion-item *ngFor="let appointment of appointments" no-padding text-wrap style="margin-bottom:-10px;">
+            <ion-grid padding-right padding-left>
+              <ion-row>
+                <ion-col col-8 align="left">
+                  <h2><b>{{appointment.title | slice: 0:15}}</b></h2>
+                </ion-col>
+                <ion-col col-4 align="right">
+                  <h3><b>{{appointment.date}}</b></h3>
+                </ion-col>
+              </ion-row>
+              <ion-row id="apt-msg-n-tme-row">
+                <ion-col col-8>
+                  <p>{{(appointment.message | slice: 0:25)}}...</p>
+                </ion-col>
+                <ion-col col-4 align="right">
+                  <p>{{appointment.time}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </div>
+        <div *ngIf="appointments.length <= 0">
+          <p>You do not have any appointement, you can use the green plus button to add one</p>
+        </div>
     </ion-card-content>
   </ion-card>
 </ion-content>
