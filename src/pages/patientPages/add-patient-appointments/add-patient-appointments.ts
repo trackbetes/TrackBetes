@@ -108,6 +108,7 @@ export class AddPatientAppointmentsPage {
          date:moment(this.addedAppointments[index].date).format('DD-MM-YYYY'),
          time:moment(this.addedAppointments[index].time).format('h:mm:a'),
          message:this.addedAppointments[index].message,
+         userId: this.currentUserId,
        }).then((index)=>{
         
          count++;
@@ -132,6 +133,7 @@ export class AddPatientAppointmentsPage {
           date:moment(this.addedAppointments[index].date).format('DD-MM-YYYY'),
           time:moment(this.addedAppointments[index].time).format('h:mm:a'),
           message:this.addedAppointments[index].message,
+          userId: this.currentUserId,
         })
 
      }
@@ -204,7 +206,7 @@ export class AddPatientAppointmentsPage {
   }
 
   getDoctorAppointmentsRef() {
-    return this.afdb.list(`doctors/${this.doctorId}/appointments/${this.currentUserId}`);
+    return this.afdb.list(`doctors/${this.doctorId}/appointments`);
   }
 
   validatedInputs(): boolean{

@@ -26,7 +26,7 @@ import { DoctorsListPage } from '../pages/patientPages/doctors-list/doctors-list
 })
 export class MyApp {
   
-  rootPage:any = TabsPage;
+  rootPage:any = DoctorTabsPage;
 
   @ViewChild(Nav) nav:Nav;
 

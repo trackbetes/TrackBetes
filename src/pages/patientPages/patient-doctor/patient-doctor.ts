@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, LoadingController, ItemSliding } from 'ionic-angular';
 import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2/database';
 import { DoctorsListPage } from '../doctors-list/doctors-list';
-import { Tab3Page } from '../tab3/tab3';
+import { PatientAppointmentsPage } from '../patient-appointments/patient-appointments';
 
 /**
  * Generated class for the PatientDoctorPage page.
@@ -73,8 +73,9 @@ export class PatientDoctorPage {
 
   }
 
-  openAppointmentsPage(){
-    this.navCtrl.parent.select(2);
+  openAppointmentsPage(slidingItem: ItemSliding){
+    slidingItem.close();
+    this.navCtrl.push(PatientAppointmentsPage);
   }
 
   openAddAppointmentsModal(slidingItem: ItemSliding) {

@@ -2,7 +2,9 @@ import { DoctorProfilePage } from './../doctor-profile/doctor-profile';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
+import { AngularFireDatabase} from 'angularfire2/database';
+import { PatientAppointmentsPage } from '../../patientPages/patient-appointments/patient-appointments';
+import { DoctorAppointmentsPage } from '../doctor-appointments/doctor-appointments';
 
 /**
  * Generated class for the DoctorDashboardPage page.
@@ -18,13 +20,19 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
 })
 export class DoctorDashboardPage {
 
+  currentUserId;
+
   doctor = {} as Doctor;
 
   patientsList = [];
 
   patientsListRef$;
 
+  appointments = [];
+
   userHasPatients:boolean = false;
+
+  userHasAppointments:boolean = false;
 
   constructor(
     public navCtrl: NavController,
@@ -48,29 +56,54 @@ export class DoctorDashboardPage {
 
     this.afAuth.authState.subscribe((auth) => {
 
-      //get User data
-      this.afdb.object(`doctors/${auth.uid}`).subscribe((userData) => {
+      this.currentUserId = auth.uid;
+
+      //get doctor's details
+      this.afdb.object(`doctors/${this.currentUserId}`).subscribe((doctor) => {
+        this.doctor = doctor;
+      })
+
+      //get doctor's patients
+      this.afdb.list(`doctors/${this.currentUserId}/patients`).subscribe((patients) => {
         
         //check if user has patients
-        if (userData.patients) {
-          this.afdb.list(`patients`).subscribe((data) => {
-
-            //push patients to patients list 
-            data.forEach((item) => {
-              this.patientsList.push(item);
-            });
-            this.userHasPatients = true;
-            loading.dismiss();
+        if(patients){
+          //push patients to patients list 
+          patients.forEach((item) => {
+            this.patientsList.push(item);
           });
+          this.userHasPatients = true;
+          loading.dismiss();
         }else {
           this.userHasPatients = false;
           loading.dismiss();
         }
-
-        this.doctor = userData;
+        
       });
-      
-     });
+
+      //get doctor's appointments
+      this.afdb.list(`doctors/${this.currentUserId}/appointments`, {
+          query: {
+            limitToLast : 3
+        }
+      }).subscribe((appointments) => {
+        
+        //check if user has appointments
+        if(appointments){
+          this.appointments = [];
+
+          //push appointments into appointments array in desc order
+          for (let index = appointments.length -1; index >= 0; index--) {
+              this.appointments.push(appointments[index]); 
+          }
+          this.userHasAppointments = true;
+        }else {
+          this.userHasAppointments = false;
+        }
+        
+      });
+
+    });
 
      
   }
@@ -81,6 +114,10 @@ export class DoctorDashboardPage {
 
   openPatientPage(){
     this.navCtrl.parent.select(1);
+  }
+
+  openAppointmentsPage() {
+    this.navCtrl.push(DoctorAppointmentsPage);
   }
 
   loadingFunc(){

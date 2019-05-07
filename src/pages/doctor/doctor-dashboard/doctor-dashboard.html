@@ -16,13 +16,43 @@
       </ion-card-content>
     </ion-card>
     <ion-card>
+        <ion-card-header>Appointments
+            <ion-buttons float-right (click)="openAppointmentsPage()" style="margin-top:-15px;">
+                <button ion-button icon-only clear color="dark">
+                    <ion-icon name="eye"></ion-icon>
+                </button>
+            </ion-buttons>
+        </ion-card-header>
+        <ion-card-content *ngIf="userHasAppointments">
+            <ion-item *ngFor="let appointment of appointments" no-padding text-wrap style="margin-bottom:-10px;">
+                <ion-grid padding-right padding-left>
+                  <ion-row>
+                    <ion-col col-8 align="left">
+                      <h2><b>{{appointment.title | slice: 0:15}}</b></h2>
+                    </ion-col>
+                    <ion-col col-4 align="right">
+                      <h3><b>{{appointment.date}}</b></h3>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row id="apt-msg-n-tme-row">
+                    <ion-col col-8>
+                      <p>{{(appointment.message | slice: 0:25)}}...</p>
+                    </ion-col>
+                    <ion-col col-4 align="right">
+                      <p>{{appointment.time}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+        </ion-card-content>
+        <ion-card-content *ngIf="!userHasAppointments">
+            <p>You do not have any appointment</p>
+        </ion-card-content>     
+    </ion-card>
+    <ion-card>
         <ion-card-header>Prescriptions</ion-card-header>
     <ion-card-content></ion-card-content>
 
-    </ion-card>
-    <ion-card>
-        <ion-card-header>Appointments</ion-card-header>
-        <ion-card-content></ion-card-content>     
     </ion-card>
 
     <ion-card (click)="openProfilePage()">
