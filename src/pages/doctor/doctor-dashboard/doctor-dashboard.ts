@@ -1,10 +1,14 @@
+import { AddDoctorPrescriptionsPage } from './../add-doctor-prescriptions/add-doctor-prescriptions';
+import { DoctorPrescriptionsPage } from './../doctor-prescriptions/doctor-prescriptions';
 import { DoctorProfilePage } from './../doctor-profile/doctor-profile';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ModalController, Events } from 'ionic-angular';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { PatientAppointmentsPage } from '../../patientPages/patient-appointments/patient-appointments';
 import { DoctorAppointmentsPage } from '../doctor-appointments/doctor-appointments';
+import { AddPatientAppointmentsPage } from '../../patientPages/add-patient-appointments/add-patient-appointments';
+import { DoctorPatientsPage } from '../doctor-patients/doctor-patients';
 
 /**
  * Generated class for the DoctorDashboardPage page.
@@ -30,9 +34,15 @@ export class DoctorDashboardPage {
 
   appointments = [];
 
+  prescriptions = [];
+
   userHasPatients:boolean = false;
 
   userHasAppointments:boolean = false;
+
+  userHasPrescriptions: boolean = false;
+
+  modal:any;
 
   constructor(
     public navCtrl: NavController,
@@ -40,6 +50,8 @@ export class DoctorDashboardPage {
     public afdb: AngularFireDatabase,
     private loadingCtlr: LoadingController,
     private afAuth:AngularFireAuth,
+    private modalCtlr: ModalController,
+    public events: Events
      ) {
       
 
@@ -64,14 +76,21 @@ export class DoctorDashboardPage {
       })
 
       //get doctor's patients
-      this.afdb.list(`doctors/${this.currentUserId}/patients`).subscribe((patients) => {
+      this.afdb.list(`doctors/${this.currentUserId}/patients`, {
+          query: {
+            limitToLast : 3
+        }
+      }).subscribe((patients) => {
         
         //check if user has patients
-        if(patients){
+        if(patients.length > 0){
+          this.patientsList = [];
+
           //push patients to patients list 
-          patients.forEach((item) => {
-            this.patientsList.push(item);
-          });
+          for (let index = patients.length -1; index >= 0; index--) {
+            this.patientsList.push(patients[index]); 
+          }
+
           this.userHasPatients = true;
           loading.dismiss();
         }else {
@@ -89,7 +108,7 @@ export class DoctorDashboardPage {
       }).subscribe((appointments) => {
         
         //check if user has appointments
-        if(appointments){
+        if(appointments.length > 0){
           this.appointments = [];
 
           //push appointments into appointments array in desc order
@@ -101,6 +120,28 @@ export class DoctorDashboardPage {
           this.userHasAppointments = false;
         }
         
+      });
+
+      //get doctor's prescriptions
+      this.afdb.list(`prescriptions/${this.currentUserId}`, {
+          query: {
+            limitToLast : 3
+          }
+        }).subscribe((prescriptions) => {
+        
+        //check if user has prescriptions
+        if(prescriptions.length > 0){
+          this.prescriptions = [];
+
+          //push prescriptions into prescriptions array in desc order
+          for (let index = prescriptions.length -1; index >= 0; index--) {
+              this.prescriptions.push(prescriptions[index]); 
+          }
+          this.userHasPrescriptions = true;
+        }else {
+          this.userHasPrescriptions = false;
+        }
+      
       });
 
     });
@@ -117,11 +158,24 @@ export class DoctorDashboardPage {
   }
 
   openAppointmentsPage() {
-    this.navCtrl.push(DoctorAppointmentsPage);
+    this.navCtrl.parent.select(2);
+  }
+
+  openPrescriptionsPage() {
+    this.navCtrl.push(DoctorPrescriptionsPage);
+  }
+
+  openAddPrescriptionsModal() {
+    this.modal = this.modalFunc(AddDoctorPrescriptionsPage);
+    this.modal.present();
   }
 
   loadingFunc(){
     return this.loadingCtlr.create();
   }
+
+  modalFunc(modalPage, params?) {
+    return this.modalCtlr.create(modalPage, params);
+}
 
 }

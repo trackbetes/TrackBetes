@@ -19,6 +19,7 @@
             <ion-card-content style="border:thin solid black; border-radius:5px;">
               {{appointment.message}}
             </ion-card-content>
+            <p margin-top>From: {{appointment.patient}}</p>
         </ion-card-content>
         <ion-buttons end (click)="deleteAppointment(appointment)">
           <button icon-only ion-button clear color="danger" >

@@ -1,14 +1,19 @@
 
 <ion-content>
     <ion-card>
-      <ion-card-header>Patients</ion-card-header>
+      <ion-card-header>Patients
+        <ion-buttons float-right (click)="openPatientPage()" style="margin-top:-15px;">
+          <button ion-button icon-only clear color="dark">
+              <ion-icon name="eye"></ion-icon>
+          </button>
+        </ion-buttons>
+      </ion-card-header>
       <ion-card-content *ngIf="userHasPatients" no-padding>
-            <ion-item *ngFor="let patient of patientsList" (click)="openPatientModal()" lines>
+            <ion-item *ngFor="let patient of patientsList" lines>
                 <ion-avatar item-start>
                     <img src="assets/imgs/profile-pic_dummy.png">
                 </ion-avatar>
                 {{patient.username}}
-                <ion-icon name="arrow-dropright" item-end></ion-icon>
             </ion-item>
       </ion-card-content>
       <ion-card-content *ngIf="!userHasPatients">
@@ -25,33 +30,54 @@
         </ion-card-header>
         <ion-card-content *ngIf="userHasAppointments">
             <ion-item *ngFor="let appointment of appointments" no-padding text-wrap style="margin-bottom:-10px;">
-                <ion-grid padding-right padding-left>
-                  <ion-row>
-                    <ion-col col-8 align="left">
-                      <h2><b>{{appointment.title | slice: 0:15}}</b></h2>
-                    </ion-col>
-                    <ion-col col-4 align="right">
-                      <h3><b>{{appointment.date}}</b></h3>
-                    </ion-col>
-                  </ion-row>
-                  <ion-row id="apt-msg-n-tme-row">
-                    <ion-col col-8>
-                      <p>{{(appointment.message | slice: 0:25)}}...</p>
-                    </ion-col>
-                    <ion-col col-4 align="right">
-                      <p>{{appointment.time}}</p>
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
-              </ion-item>
+              <ion-grid padding-right padding-left>
+                <ion-row>
+                  <ion-col col-8 align="left">
+                    <h2><b>{{appointment.title | slice: 0:15}}</b></h2>
+                  </ion-col>
+                  <ion-col col-4 align="right">
+                    <h3><b>{{appointment.date}}</b></h3>
+                  </ion-col>
+                </ion-row>
+                <ion-row id="apt-msg-n-tme-row">
+                  <ion-col col-8>
+                    <p>{{(appointment.message | slice: 0:25)}}...</p>
+                  </ion-col>
+                  <ion-col col-4 align="right">
+                    <p>{{appointment.time}}</p>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
         </ion-card-content>
         <ion-card-content *ngIf="!userHasAppointments">
-            <p>You do not have any appointment</p>
+            <p>You have no appointment</p>
         </ion-card-content>     
     </ion-card>
     <ion-card>
-        <ion-card-header>Prescriptions</ion-card-header>
-    <ion-card-content></ion-card-content>
+        <ion-card-header>
+          <ion-buttons float-right (click)="openPrescriptionsPage()" style="margin-top:-15px;">
+              <button ion-button icon-only clear color="dark">
+                  <ion-icon name="eye"></ion-icon>
+              </button>
+          </ion-buttons>
+          Prescriptions
+          <ion-buttons float-right (click)="openAddPrescriptionsModal()" style="margin-top:-15px;">
+            <button ion-button icon-only clear color="secondary">
+                <ion-icon name="add"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-card-header>
+    <ion-card-content *ngIf="userHasPrescriptions">
+        <ion-item *ngFor="let prescription of prescriptions" no-padding text-wrap style="margin-bottom:-10px;">
+            <h2><b>{{prescription.medicationName}}</b></h2>
+            <p>{{prescription.dosage}}</p>
+            <p>{{prescription.notes}}</p>
+          </ion-item>
+    </ion-card-content>
+    <ion-card-content *ngIf="!userHasPrescriptions">
+        <p>You have not made any prescription</p>
+    </ion-card-content>
 
     </ion-card>
 

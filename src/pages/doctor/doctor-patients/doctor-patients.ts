@@ -19,7 +19,6 @@ export class DoctorPatientsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad DoctorPatientsPage');
   }
 
 }

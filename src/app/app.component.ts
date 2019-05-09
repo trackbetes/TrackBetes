@@ -1,3 +1,4 @@
+import { AddDoctorPrescriptionsPage } from './../pages/doctor/add-doctor-prescriptions/add-doctor-prescriptions';
 import { PatientAppointmentsPage } from './../pages/patientPages/patient-appointments/patient-appointments';
 import { DoctorsListProfilePage } from './../pages/patientPages/doctors-list-profile/doctors-list-profile';
 import { AddPatientAppointmentsPage } from './../pages/patientPages/add-patient-appointments/add-patient-appointments';
@@ -21,6 +22,7 @@ import { DoctorDashboardPage } from '../pages/doctor/doctor-dashboard/doctor-das
 import { DoctorProfilePage } from '../pages/doctor/doctor-profile/doctor-profile';
 import { DoctorInstitutionnSpecialityProfilePage } from '../pages/doctor/doctor-institutionn-speciality-profile/doctor-institutionn-speciality-profile';
 import { DoctorsListPage } from '../pages/patientPages/doctors-list/doctors-list';
+import { DoctorPrescriptionsPage } from '../pages/doctor/doctor-prescriptions/doctor-prescriptions';
 @Component({
   templateUrl: 'app.html',
 })

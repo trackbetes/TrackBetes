@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Edit Prescription</ion-title>
+    <ion-buttons end>
+      <button ion-button color="danger" icon-only clear (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Medication Name</ion-label>
+      <ion-input type="text" [(ngModel)]="prescription.medicationName" clearInput="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Dosage</ion-label>
+      <ion-input type="text" [(ngModel)]="prescription.dosage" clearInput="true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Doctor in charge</ion-label>
+      <ion-input type="text" [(ngModel)]="prescription.doctorInCharge" clearInput="true"></ion-input>
+    </ion-item>
+    <div class="comments">
+      <ion-label>Notes...</ion-label>
+      <textarea class="form-control" rows="5" [(ngModel)]="prescription.notes"></textarea>
+    </div>
+    <button (click)="savePrescription()" ion-button block margin-top>Save Prescription</button>
+  </ion-list>
+</ion-content>

@@ -1,8 +1,24 @@
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>Patients</ion-card-header>
-    <ion-card-content>
-      
-    </ion-card-content>
-  </ion-card>
+  <ion-navbar no-margin>
+    <ion-title>Patients</ion-title>
+  </ion-navbar>
+  <!--<ion-list>
+      <ion-item-sliding *ngFor="let doctor of doctorsList" #slidingItem>
+        <ion-item>
+          <ion-avatar item-start>
+            <img src="assets/imgs/profile-pic_dummy.png">
+          </ion-avatar>
+          {{doctor.username}}
+          <ion-icon name="custom-sliderArrow" item-end></ion-icon>
+        </ion-item>
+        <ion-item-options>
+          <button ion-button icon-only clear (click)="addDoctor(doctor, slidingItem)" color="secondary">
+            <ion-icon name="add" ></ion-icon>
+          </button>
+          <button ion-button icon-only clear (click)="viewDoctorProfile(doctor, slidingItem)" color="dark">
+            <ion-icon name="eye" ></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+  </ion-list>-->
 </ion-content>

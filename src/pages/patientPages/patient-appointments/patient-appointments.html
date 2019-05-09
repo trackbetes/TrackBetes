@@ -2,6 +2,11 @@
   <ion-navbar>
     <ion-title>Appointments</ion-title>
   </ion-navbar>
+  <ion-fab bottom right>
+    <button ion-fab (click)="openAddAppointmentsModal()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
   <div *ngIf="appointments.length > 0">
     <ion-card *ngFor="let appointment of appointments">
       <ion-card-content>
@@ -30,13 +35,8 @@
   <div *ngIf="appointments.length <= 0">
     <ion-card>
       <ion-card-content>
-          <p>You do not have any appointement, you can use the plus button to add one</p>
+          <p>You do not have any appointment, you can use the plus button to add one</p>
       </ion-card-content>
     </ion-card>
-    <ion-fab center middle>
-      <button ion-fab (click)="openAddAppointmentsModal()">
-        <ion-icon name="add"></ion-icon>
-      </button>
-    </ion-fab>
   </div>
 </ion-content>

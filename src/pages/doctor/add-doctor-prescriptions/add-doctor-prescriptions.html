@@ -1,0 +1,61 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-buttons left>
+        <button ion-button icon-only color="danger" (click)="closeModal()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title align="center">Presriptions</ion-title>
+      <ion-buttons right>
+        <button ion-button icon-only color="secondary" (click)="savePrescriptions()">
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+          <ion-label floating>Medication Name</ion-label>
+          <ion-input type="text" [(ngModel)]="prescriptions.medicationName" clearInput="true"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Dosage</ion-label>
+          <ion-input type="text" [(ngModel)]="prescriptions.dosage" clearInput="true"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Doctor in charge</ion-label>
+          <ion-input type="text" [(ngModel)]="prescriptions.doctorInCharge" clearInput="true"></ion-input>
+        </ion-item>
+        <div class="comments">
+          <ion-label>Notes...</ion-label>
+          <textarea class="form-control" rows="5" [(ngModel)]="prescriptions.notes"></textarea>
+        </div>
+        <button (click)="addPrescription()" ion-button block margin-top>Add Prescription</button>
+
+        <ion-card *ngIf="addedPrescriptions.length > 0">
+          <ion-card-header>Added Prescriptions</ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item-sliding *ngFor="let prescription of addedPrescriptions" #slidingItem>
+                <button ion-item>{{prescription.medicationName}}
+                  <ion-icon name="custom-sliderArrow" item-end></ion-icon>
+                </button>
+                <ion-item-options>
+                  <button ion-button icon-only clear color="secondary" (click)="editAddedPrescriptions(prescription, slidingItem)">
+                    <ion-icon name="create" ></ion-icon>
+                  </button>
+                  <button ion-button icon-only clear color="danger" (click)="deleteAddedPrescription(prescription, slidingItem)">
+                    <ion-icon name="trash" ></ion-icon>
+                  </button>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-list>
+</ion-content>

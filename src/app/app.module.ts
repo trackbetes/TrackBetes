@@ -1,3 +1,4 @@
+import { AddDoctorPrescriptionsPage } from './../pages/doctor/add-doctor-prescriptions/add-doctor-prescriptions';
 import { EditPatientAppointmentPage } from './../pages/edit-patient-appointment/edit-patient-appointment';
 import { DoctorProfilePage } from './../pages/doctor/doctor-profile/doctor-profile';
 import { CholesterolChartPage } from './../pages/patientPages/cholesterol-chart/cholesterol-chart';
@@ -59,6 +60,7 @@ import { DoctorEducationnExperienceProfilePage } from '../pages/doctor/doctor-ed
 import { DoctorInstitutionnSpecialityProfilePage } from '../pages/doctor/doctor-institutionn-speciality-profile/doctor-institutionn-speciality-profile';
 import { PatientProfilePage } from '../pages/patientPages/patient-profile/patient-profile';
 import { DoctorsListProfilePage } from '../pages/patientPages/doctors-list-profile/doctors-list-profile';
+import { EditDoctorPrescriptionPage } from '../pages/doctor/edit-doctor-prescription/edit-doctor-prescription';
 @NgModule({
   declarations: [
     MyApp,
@@ -87,6 +89,7 @@ import { DoctorsListProfilePage } from '../pages/patientPages/doctors-list-profi
     CholesterolChartPage,
     PatientProfilePage,
     DoctorsListProfilePage,
+
     
     
     MedicalRecordsModalPage,
@@ -102,13 +105,15 @@ import { DoctorsListProfilePage } from '../pages/patientPages/doctors-list-profi
     DoctorTabsPage,
     DoctorDashboardPage,
     DoctorPrescriptionsPage,
+    AddDoctorPrescriptionsPage,
+    EditDoctorPrescriptionPage,
     DoctorAppointmentsPage,
     DoctorMessagesPage,
     DoctorPatientsPage,
     DoctorProfilePage,
     DoctorPersonalnContactProfilePage,
     DoctorEducationnExperienceProfilePage,
-    DoctorInstitutionnSpecialityProfilePage
+    DoctorInstitutionnSpecialityProfilePage,
 
     
   ],
@@ -171,6 +176,8 @@ import { DoctorsListProfilePage } from '../pages/patientPages/doctors-list-profi
     DoctorTabsPage,
     DoctorDashboardPage,
     DoctorPrescriptionsPage,
+    AddDoctorPrescriptionsPage,
+    EditDoctorPrescriptionPage,
     DoctorAppointmentsPage,
     DoctorMessagesPage,
     DoctorPatientsPage,

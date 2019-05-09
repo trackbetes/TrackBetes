@@ -33,10 +33,12 @@ export class AddPatientAppointmentsPage {
 
   doctorId;
 
+  currentUser;
+
   messages = {
     emptyFields:'You forgot to fill one or more fields, please check and try again',
     addedEntry:'New appointments have been added successfully',
-    noAddedAppointment:'You have not added any appointment, do u still want to leave ?',
+    noAddedAppointment:'You have not added any appointment, do you still want to leave ?',
     savingAppointments:'Saving your appointments, please wait...'
     
   }
@@ -61,6 +63,7 @@ export class AddPatientAppointmentsPage {
 
       //get patient's doctor
       this.afdb.object(`patients/${this.currentUserId}`).subscribe((userData) => {
+        this.currentUser = userData
         this.doctorId = userData.doctorId;
       })
 
@@ -133,6 +136,7 @@ export class AddPatientAppointmentsPage {
           date:moment(this.addedAppointments[index].date).format('DD-MM-YYYY'),
           time:moment(this.addedAppointments[index].time).format('h:mm:a'),
           message:this.addedAppointments[index].message,
+          patient:this.currentUser.officialName,
           userId: this.currentUserId,
         })
 
