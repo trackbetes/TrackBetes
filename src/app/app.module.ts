@@ -1,3 +1,4 @@
+import { DoctorSelectedPatientPage } from './../pages/doctor-selected-patient/doctor-selected-patient';
 import { AddDoctorPrescriptionsPage } from './../pages/doctor/add-doctor-prescriptions/add-doctor-prescriptions';
 import { EditPatientAppointmentPage } from './../pages/edit-patient-appointment/edit-patient-appointment';
 import { DoctorProfilePage } from './../pages/doctor/doctor-profile/doctor-profile';
@@ -89,6 +90,7 @@ import { EditDoctorPrescriptionPage } from '../pages/doctor/edit-doctor-prescrip
     CholesterolChartPage,
     PatientProfilePage,
     DoctorsListProfilePage,
+    DoctorSelectedPatientPage,
 
     
     
@@ -155,6 +157,7 @@ import { EditDoctorPrescriptionPage } from '../pages/doctor/edit-doctor-prescrip
     CholesterolChartPage,
     PatientProfilePage,
     DoctorsListProfilePage,
+    DoctorSelectedPatientPage,
 
     
     
