@@ -96,9 +96,8 @@ export class DoctorPatientsPage {
   
   }
 
-  openSelectedPatientModal(patient) {
-    let modal = this.modalFunc(DoctorSelectedPatientPage, {patient: patient});
-    modal.present();
+  openSelectedPatientPage(patient) {
+    this.navCtrl.push(DoctorSelectedPatientPage, {'patient': patient});
   }
 
   getDoctorPatientsRef() {

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, LoadingController, ModalController } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { DoctorPatientChartsPage } from '../doctor-patient-charts/doctor-patient-charts';
 
 /**
  * Generated class for the DoctorSelectedPatientPage page.
@@ -19,11 +20,14 @@ export class DoctorSelectedPatientPage {
 
   patient: any = 'Patient';
 
+  modal: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private viewCtlr: ViewController,
     public afdb: AngularFireDatabase,
     private afAuth:AngularFireAuth,
-    private loadingCtlr: LoadingController,) {
+    private loadingCtlr: LoadingController,
+    private modalCtlr: ModalController,) {
   }
 
   ionViewDidLoad() {
@@ -41,12 +45,22 @@ export class DoctorSelectedPatientPage {
 
   }
 
+  openChartsModal() {
+    this.modal = this.modalFunc(DoctorPatientChartsPage);
+    this.modal.present();
+  }
+
   getPatientsRef() {
     return this.afdb.object(`patients/${this.patient.$key}`);
   }
 
+
   loadingFunc(){
     return this.loadingCtlr.create();
+  }
+
+  modalFunc(modalPage) {
+    return this.modalCtlr.create(modalPage);
   }
 
   //close the modal 

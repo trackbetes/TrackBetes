@@ -62,7 +62,7 @@ export class AddPatientAppointmentsPage {
       this.currentUserId = auth.uid;
 
       //get patient's doctor
-      this.afdb.object(`patients/${this.currentUserId}`).subscribe((userData) => {
+      this.afdb.object(`patients/${auth.uid}`).subscribe((userData) => {
         this.currentUser = userData
         this.doctorId = userData.doctorId;
       })
@@ -136,7 +136,7 @@ export class AddPatientAppointmentsPage {
           date:moment(this.addedAppointments[index].date).format('DD-MM-YYYY'),
           time:moment(this.addedAppointments[index].time).format('h:mm:a'),
           message:this.addedAppointments[index].message,
-          patient:this.currentUser.officialName,
+          patient: ((!this.currentUser.officialName)? this.currentUser.username : this.currentUser.officialName),
           userId: this.currentUserId,
         })
 

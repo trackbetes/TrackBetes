@@ -9,6 +9,7 @@ import { PatientAppointmentsPage } from '../../patientPages/patient-appointments
 import { DoctorAppointmentsPage } from '../doctor-appointments/doctor-appointments';
 import { AddPatientAppointmentsPage } from '../../patientPages/add-patient-appointments/add-patient-appointments';
 import { DoctorPatientsPage } from '../doctor-patients/doctor-patients';
+import { DoctorSelectedPatientPage } from '../../doctor-selected-patient/doctor-selected-patient';
 
 /**
  * Generated class for the DoctorDashboardPage page.
@@ -154,11 +155,15 @@ export class DoctorDashboardPage {
   }
 
   openPatientPage(){
-    this.navCtrl.parent.select(1);
+    this.navCtrl.push(DoctorPatientsPage);
+  }
+
+  openSelectedPatientPage(patient) {
+    this.navCtrl.push(DoctorSelectedPatientPage, {'patient': patient});
   }
 
   openAppointmentsPage() {
-    this.navCtrl.parent.select(2);
+    this.navCtrl.push(DoctorAppointmentsPage);
   }
 
   openPrescriptionsPage() {

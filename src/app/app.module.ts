@@ -1,3 +1,4 @@
+import { DoctorPatientChartsPage } from './../pages/doctor-patient-charts/doctor-patient-charts';
 import { DoctorSelectedPatientPage } from './../pages/doctor-selected-patient/doctor-selected-patient';
 import { AddDoctorPrescriptionsPage } from './../pages/doctor/add-doctor-prescriptions/add-doctor-prescriptions';
 import { EditPatientAppointmentPage } from './../pages/edit-patient-appointment/edit-patient-appointment';
@@ -91,6 +92,7 @@ import { EditDoctorPrescriptionPage } from '../pages/doctor/edit-doctor-prescrip
     PatientProfilePage,
     DoctorsListProfilePage,
     DoctorSelectedPatientPage,
+    DoctorPatientChartsPage,
 
     
     
@@ -158,6 +160,7 @@ import { EditDoctorPrescriptionPage } from '../pages/doctor/edit-doctor-prescrip
     PatientProfilePage,
     DoctorsListProfilePage,
     DoctorSelectedPatientPage,
+    DoctorPatientChartsPage,
 
     
     

@@ -3,18 +3,17 @@
     <ion-card>
       <ion-card-header>Patients
         <ion-buttons float-right (click)="openPatientPage()" style="margin-top:-15px;">
-          <button ion-button icon-only clear color="dark">
-              <ion-icon name="eye"></ion-icon>
-          </button>
+          <button ion-button clear >view</button>
         </ion-buttons>
       </ion-card-header>
       <ion-card-content *ngIf="userHasPatients" no-padding>
-            <ion-item *ngFor="let patient of patientsList" lines>
+            <button ion-item *ngFor="let patient of patientsList" lines (click)="openSelectedPatientPage(patient)">
                 <ion-avatar item-start>
                     <img src="assets/imgs/profile-pic_dummy.png">
                 </ion-avatar>
                 {{patient.username}}
-            </ion-item>
+                <ion-icon name="arrow-dropright" item-end></ion-icon>
+            </button>
       </ion-card-content>
       <ion-card-content *ngIf="!userHasPatients">
         <p>You do not have any patient</p>

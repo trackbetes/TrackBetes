@@ -5,7 +5,7 @@
   <ion-searchbar (ionInput)="getSearchedPatients($event)" animated="true"></ion-searchbar>
   <ion-list>
     <div *ngIf="userHasPatients">
-      <button ion-item *ngFor="let patient of searchedPatients" (click)="openSelectedPatientModal(patient)">
+      <button ion-item *ngFor="let patient of searchedPatients" (click)="openSelectedPatientPage(patient)">
         <ion-avatar item-start>
           <img src="assets/imgs/profile-pic_dummy.png">
         </ion-avatar>

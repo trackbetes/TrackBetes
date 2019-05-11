@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Charts</ion-title>
+    <ion-buttons end>
+      <button ion-button color="danger" (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <button ion-item (click)="showBloodSugarChart()">
+      <ion-icon name="water" item-start color="danger"></ion-icon>
+      Blood Sugar
+      <ion-icon name="arrow-dropright" item-end color="danger"></ion-icon>
+    </button>
+    <button ion-item (click)="showBloodPressureChart()">
+      <ion-icon name="custom-blood-pressure" item-start color="dark"></ion-icon>
+      Blood Pressure
+      <ion-icon name="arrow-dropright" item-end color="dark"></ion-icon>
+    </button>
+    <button ion-item (click)="showWeightChart()">
+      <ion-icon name="custom-weight" item-start color="primary"></ion-icon>
+      Weight
+      <ion-icon name="arrow-dropright" item-end color="primary"></ion-icon>
+    </button>
+    <button ion-item (click)="showCholesterolChart()">
+      <ion-icon name="custom-cholesterol" item-start color="secondary"></ion-icon>
+      Cholestrol
+      <ion-icon name="arrow-dropright" item-end color="secondary"></ion-icon>
+    </button>
+  </ion-list>
+</ion-content>

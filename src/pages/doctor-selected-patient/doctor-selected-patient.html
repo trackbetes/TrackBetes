@@ -2,15 +2,15 @@
 
   <ion-navbar>
     <ion-title>{{patient.username}}</ion-title>
-    <ion-buttons end>
-      <button ion-button color="danger" (click)="closeModal()">
-        <ion-icon name="close"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 <ion-content padding>
+  <button ion-item (click)="openChartsModal()">
+    <ion-icon name="custom-charts" item-start></ion-icon>
+      Charts
+      <ion-icon name="arrow-dropright" item-end></ion-icon>
+  </button>
   <ion-card>
     <ion-card-content>
       <p>{{patient.officialName}}</p>
