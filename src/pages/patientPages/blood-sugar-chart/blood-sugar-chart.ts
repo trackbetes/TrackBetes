@@ -48,6 +48,32 @@ dismissBSFastingSpinner = false;
 
 dismissBSNonFastingSpinner = false;
 
+chartType = {
+    line:'line',
+    spline:'spline',
+    column:'column',
+    bar:'bar',
+    area:'area'
+}
+
+selectedChartType = this.chartType.spline;
+
+peroid = {
+    week:'week',
+    month:'month',
+    year:'year'
+}
+
+periodSymbols = {
+    week:'%e %b, %y',
+    month:'%B',
+    year:'%Y'
+}
+
+selectedPeriod = this.peroid.month;
+
+
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -110,27 +136,30 @@ bsFastingChart() {
 
     this.bsFastingChartOptions =  {
         chart: {
-            type: 'spline',
-            backgroundColor: '#ccc',
+            type: this.selectedChartType,
+            backgroundColor: 'white',
         },
         title: {
             text: ''
         },
+        credits: {
+            enabled: false
+        },
         xAxis: {
             type: 'datetime',
             dateTimeLabelFormats: {
-                hour: '%A, %b %e, %H:%M',
+                
             },
         },
         yAxis: {
             title: {
-                text: 'Values'
+                text: ''
             },
             min: 0
         },
         tooltip: {
             headerFormat: '<b>{series.name}</b><br>',
-            pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
+            pointFormat: '{point.x:%e %b, %Y}: {point.y:.2f} m'
         },
 
         plotOptions: {
@@ -165,6 +194,22 @@ bsFastingChart() {
     };
 
     this.bsFastingChartOptions.series[0].name = this.bloodSugarType.bsFasting;
+
+    this.bsFastingChartOptions.chart.type = this.selectedChartType;
+
+    switch (this.selectedPeriod) {
+        case this.peroid.week:
+            this.bsFastingChartOptions.xAxis.dateTimeLabelFormats.month = this.periodSymbols.week;
+            break;
+        case this.peroid.month:
+            this.bsFastingChartOptions.xAxis.dateTimeLabelFormats.month = this.periodSymbols.month;
+            break;
+        case this.peroid.year:
+            this.bsFastingChartOptions.xAxis.dateTimeLabelFormats.month = this.periodSymbols.year;
+            break;
+        default:
+            break;
+    }
 }
 
 bsNonFastingChart() {
@@ -178,8 +223,8 @@ bsNonFastingChart() {
 
     this.bsNonFastingChartOptions =  {
         chart: {
-            type: 'spline',
-            backgroundColor: '#ccc',
+            type: this.selectedChartType,
+            backgroundColor: 'white',
         },
         title: {
             text: ''
@@ -187,18 +232,21 @@ bsNonFastingChart() {
         xAxis: {
             type: 'datetime',
             dateTimeLabelFormats: {
-                hour: '%A, %b %e, %H:%M',
+                
             },
+        },
+        credits: {
+            enabled: false
         },
         yAxis: {
             title: {
-                text: 'Values'
+                text: ''
             },
             min: 0
         },
         tooltip: {
             headerFormat: '<b>{series.name}</b><br>',
-            pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
+            pointFormat: '{point.x:%e %b, %Y}: {point.y:.2f} m'
         },
 
         plotOptions: {
@@ -233,7 +281,38 @@ bsNonFastingChart() {
     };
 
     this.bsNonFastingChartOptions.series[0].name = this.bloodSugarType.bsNonFasting;
+
+    this.bsNonFastingChartOptions.chart.type = this.selectedChartType;
+
+    switch (this.selectedPeriod) {
+        case this.peroid.week:
+            this.bsNonFastingChartOptions.xAxis.dateTimeLabelFormats.month = this.periodSymbols.week;
+            break;
+        case this.peroid.month:
+            this.bsNonFastingChartOptions.xAxis.dateTimeLabelFormats.month = this.periodSymbols.month;
+            break;
+        case this.peroid.year:
+            this.bsNonFastingChartOptions.xAxis.dateTimeLabelFormats.month = this.periodSymbols.year;
+            break;
+        default:
+            break;
+    }
 }
+
+changebsFastingChartType(event) {
+    
+    this.bsFastingChart();
+
+    this.bsNonFastingChart();
+}
+
+changebsFastingPeriod(event) {
+    this.bsFastingChart();
+
+    this.bsNonFastingChart();
+}
+
+
 
 loadingFunc(){
   return this.loadingCtlr.create();

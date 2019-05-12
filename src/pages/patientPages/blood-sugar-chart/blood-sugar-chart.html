@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>bloodSugarChart</ion-title>
+    <ion-title>Blood Sugar</ion-title>
     <ion-buttons end>
       <button ion-button color="danger" (click)="closeModal()">
         <ion-icon name="close"></ion-icon>
@@ -12,16 +12,98 @@
 </ion-header>
 
 
-<ion-content padding>
-<ion-card-title align="center">Blood Sugar/ Fasting</ion-card-title>
-  <ion-card-content no-padding>
-    <ion-spinner name="bubbles" *ngIf="!dismissBSFastingSpinner"></ion-spinner>
-    <chart [options]="bsFastingChartOptions" type="chart"></chart>
-  </ion-card-content>
+<ion-content>
+    <ion-card-content style="margin-bottom:-35px;">
+        <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                      <ion-select [(ngModel)]="selectedChartType" (ionChange)=changebsFastingChartType($event) style="float:left;">
+                        <ion-option value="{{chartType.spline}}">{{chartType.spline}}</ion-option>
+                        <ion-option value="{{chartType.line}}">{{chartType.line}}</ion-option>
+                        <ion-option value="{{chartType.column}}">{{chartType.column}}</ion-option>
+                        <ion-option value="{{chartType.bar}}">{{chartType.bar}}</ion-option>
+                        <ion-option value="{{chartType.area}}">{{chartType.area}}</ion-option>
+                      </ion-select>
+              </ion-col>
+              <ion-col col-6>
+                <ion-select [(ngModel)]="selectedPeriod" (ionChange)=changebsFastingPeriod($event) style="float:right; margin-right: 10px;">
+                  <ion-option value="{{peroid.day}}">{{peroid.day}}</ion-option>
+                  <ion-option value="{{peroid.week}}">{{peroid.week}}</ion-option>
+                  <ion-option value="{{peroid.month}}">{{peroid.month}}</ion-option>
+                  <ion-option value="{{peroid.year}}">{{peroid.year}}</ion-option>
+                </ion-select>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+    </ion-card-content>
+  <ion-card> 
+    <ion-card-content  class="card-content" no-padding padding-top padding-bottom>
+      <ion-spinner name="bubbles" *ngIf="!dismissBSFastingSpinner"></ion-spinner>
+      <chart [options]="bsFastingChartOptions" type="chart"></chart>
+      <ion-grid no-padding margin-left>
+        <ion-row>
+          <ion-col>
+            <div>
+              <ion-col col-1>
+                <ion-icon name="color-filter" color="danger"></ion-icon>
+              </ion-col>
+              <ion-col col-11>Diabetes</ion-col>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-col col-1>
+                <ion-icon name="color-filter" color="yellow"></ion-icon>
+              </ion-col>
+              <ion-col col-12>Pre Diabetes</ion-col>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-col col-1>
+                <ion-icon name="color-filter" color="secondary"></ion-icon>
+              </ion-col>
+              <ion-col col-11>Normal</ion-col>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
   <ion-item-divider></ion-item-divider>
-  <ion-card-title align="center">Blood Sugar/ Non Fasting</ion-card-title>
-  <ion-card-content no-padding>
-    <ion-spinner name="bubbles" *ngIf="!dismissBSNonFastingSpinner"></ion-spinner>
-    <chart [options]="bsNonFastingChartOptions" type="chart"></chart>
-  </ion-card-content>
+  <ion-card> 
+    <ion-card-content  class="card-content" no-padding padding-top padding-bottom>
+      <ion-spinner name="bubbles" *ngIf="!dismissBSNonFastingSpinner"></ion-spinner>
+      <chart [options]="bsNonFastingChartOptions" type="chart"></chart>
+      <ion-grid no-padding margin-left>
+        <ion-row>
+          <ion-col>
+            <div>
+              <ion-col col-1>
+                <ion-icon name="color-filter" color="danger"></ion-icon>
+              </ion-col>
+              <ion-col col-11>Diabetes</ion-col>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-col col-1>
+                <ion-icon name="color-filter" color="yellow"></ion-icon>
+              </ion-col>
+              <ion-col col-12>Pre Diabetes</ion-col>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-col col-1>
+                <ion-icon name="color-filter" color="secondary"></ion-icon>
+              </ion-col>
+              <ion-col col-11>Normal</ion-col>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  
 </ion-content>

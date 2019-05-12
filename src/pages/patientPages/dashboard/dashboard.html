@@ -13,7 +13,7 @@
     </ion-card-content>
   </ion-card>-->
   <ion-card> 
-    <ion-card-content no-padding class="card-content">
+    <ion-card-content  class="card-content" no-padding>
       <ion-item>
         <ion-label>Records type</ion-label>
         <ion-select [(ngModel)]="selectedMedicalRecordsType" interface="action-sheet" (ionChange)=changeMedicalRecordsChart($event)>
@@ -23,7 +23,7 @@
         </ion-select>
       </ion-item>
       <chart [options]="chartOptions" type="chart"></chart>
-      <ion-grid padding>
+      <ion-grid no-padding margin-left margin-bottom>
         <ion-row>
           <ion-col>
             <div>
@@ -38,7 +38,7 @@
               <ion-col col-1>
                 <ion-icon name="color-filter" color="yellow"></ion-icon>
               </ion-col>
-              <ion-col col-11>Pre Diabetes</ion-col>
+              <ion-col col-12>Pre Diabetes</ion-col>
             </div>
           </ion-col>
           <ion-col>

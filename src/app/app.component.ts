@@ -28,7 +28,7 @@ import { DoctorPrescriptionsPage } from '../pages/doctor/doctor-prescriptions/do
 })
 export class MyApp {
   
-  rootPage:any = DoctorTabsPage;
+  rootPage:any = BloodSugarChartPage;
 
   @ViewChild(Nav) nav:Nav;
 

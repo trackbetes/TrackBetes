@@ -43,6 +43,8 @@ export class DashboardPage {
 
     barChart: any;
 
+    userHasMedicalRecords: boolean = false;
+
     medicalRecordsType = {
         bsFasting:'Blood Sugar/fasting',
         bsNonFasting:'Blood Sugar/non fasting',
@@ -139,32 +141,41 @@ export class DashboardPage {
                     [moment(item.date).valueOf(), item.value]
                 )
             });
+            if(data.length > 0) {
+                this.userHasMedicalRecords = true;
+            }else{
+                this.userHasMedicalRecords = false;
+            }
 
             
         
             this.chartOptions =  {
                 chart: {
-                    type: 'spline',
-                    backgroundColor: '#ccc',
+                    type: 'column',
+                    backgroundColor: 'white',
                 },
+                credits: {
+                    enabled: false
+                },
+
                 title: {
-                    text: 'Medical Records'
+                    text: '',
                 },
                 xAxis: {
                     type: 'datetime',
                     dateTimeLabelFormats: {
-                        hour: '%A, %b %e, %H:%M',
+                        hour: '%b. %y',
                     },
                 },
                 yAxis: {
+                    min: 0,
                     title: {
-                        text: 'Values'
+                        text: ''
                     },
-                    min: 0
                 },
                 tooltip: {
                     headerFormat: '<b>{series.name}</b><br>',
-                    pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
+                    pointFormat: '{point.x:%e %b, %Y}: {point.y:.2f} m'
                 },
 
                 plotOptions: {
@@ -195,7 +206,7 @@ export class DashboardPage {
                     },{
                         color: 'red'
                     }]
-                }]
+                }],
             };
 
             this.chartOptions.series[0].name = this.selectedMedicalRecordsType;
