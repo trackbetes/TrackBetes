@@ -29,7 +29,7 @@
     "angular2-highcharts": "^0.5.5",
     "angularfire2": "^4.0.0-rc.1",
     "bootstrap": "^4.2.1",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "cordova-android": "7.1.4",
     "cordova-plugin-device": "^2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.1.3",
